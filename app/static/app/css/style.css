@@ -1,0 +1,611 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*Seccion Body de la pagina(Listo)*/ 
+  body{
+      background-color: azure;
+  }
+
+/*Seccion Header de la pagina*/
+
+/* Header */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    background-color: #f8f8f8;
+    padding: 0 20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Logo */
+  .contenedor_logo {
+    flex: 1;
+  }
+
+  .item-logo {
+    width: 150px;
+  }
+
+  /* Barra búsqueda */
+  .contenedor_barrabusqueda {
+    flex: 2;
+  }
+
+  .item-barra-busqueda {
+    display: flex;
+    align-items: center;
+    height: 45px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 0 5px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .item-barra-busqueda input[type="text"] {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+  }
+
+  .boton-busqueda {
+    border: none;
+    background-color: #8C20BA;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .boton-busqueda:hover {
+    background-color: #6b1c99;
+  }
+
+  .item-barra-busqueda input {
+    margin-right: 10px;
+  }
+
+  /* Login */
+  .subcontenedor_login {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    background-color:  #f8f8f8;
+  }
+
+  .subcontenedor_login ul {
+    display: flex;
+    list-style: none;
+  }
+
+  .subcontenedor_login li {
+    margin-left: 20px;
+  }
+
+  .subcontenedor_login a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid #333;
+  }
+
+  .subcontenedor_login a:hover {
+    background-color: #333;
+    color: white;
+  }
+
+  /* Media Query */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .contenedor_logo {
+      margin-bottom: 20px;
+    }
+
+    .contenedor_barrabusqueda {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .item-barra-busqueda {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: auto;
+    }
+
+    .item-barra-busqueda input[type="text"] {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .boton-busqueda {
+      width: 100%;
+    }
+
+    .subcontenedor_login {
+      width: 100%;
+    }
+  }
+
+
+/*Seccion Categorias de la pagina*/
+
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+    padding: 1rem;
+  }
+
+  .contenedor_categorias {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .categoria {
+    margin: 0 0.5rem;
+    flex-basis: 25%;
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #333;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+  }
+
+  li a:hover {
+    background-color: #333;
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .categoria {
+      flex-basis: 50%;
+    }
+  }
+
+/*Categoria Banner estilo Carrusel(listo)*/
+
+  #myCarousel {
+    margin: 20px auto;
+    max-width: 950px;
+  }
+  
+  .carousel-item {
+    height: 400px;
+  }
+  
+  .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 50px;
+  }
+  
+  .carousel-caption h5 {
+    color: #fff;
+  }
+  
+  .carousel-caption p {
+    color: #fff;
+    margin-bottom: 0;
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 5%;
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    height: 100%;
+  }
+  
+  .carousel-control-prev-icon {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8"><path d="M5.5 0l-3 3 3 3v-2h2v-2h-2v-2z"/></svg>');
+  }
+  
+  .carousel-control-next-icon {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8"><path d="M2.5 0v2h-2v2h2v2l3-3-3-3z"/></svg>');
+  }
+  
+  .carousel-indicators {
+    margin-top: 20px;
+  }
+  
+  .carousel-indicators button {
+    background-color: #aaa;
+    border: none;
+    border-radius: 10px;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+  }
+  
+  .carousel-indicators .active {
+    background-color: #333;
+    width: 12px;
+    height: 12px;
+    margin: 0 4px;
+  }
+  
+
+  /*Categoria Eventos publicados*/
+  .eventos {
+    margin-top: 50px;
+  }
+  
+  .eventos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .eventos article {
+    width: calc((100% - 40px) / 3); /* 3 eventos por fila */
+    background-color: #f2f2f2;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden; /* para recortar la imagen si es necesario */
+  }
+  
+  .eventos article img {
+    width: 100%;
+  }
+  
+  .eventos figure {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    height: 200px; /* establecemos una altura fija para el contenedor del evento */
+  }
+  
+  .eventos img {
+    height: 100%; /* ajustamos la imagen al tamaño del contenedor */
+    width: 100%;
+    object-fit: cover; /* ajustamos la imagen al tamaño del contenedor sin distorsionarla */
+  }
+  
+  
+  /*Categorio Footer de la pagina(listo)*/
+
+  #elementos_footers {
+    background-color: #8C20BA;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0;
+  }
+  
+  .contenedor_sociales {
+    display: flex;
+    justify-content: center; /* centra horizontalmente */
+    align-items: center; /* centra verticalmente */
+  }
+
+  .Contenedor_footer ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+  
+  .Contenedor_footer li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  .Contenedor_footer a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .Redes_Sociales {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  
+  .Redes_Sociales li {
+    margin-right: 20px;
+  }
+  
+  .Redes_Sociales a {
+    color: #fff;
+    font-size: 24px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .Redes_Sociales a:hover {
+    transform: translateY(-5px);
+  }
+  
+  .derechos_autor {
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  /*Categoria de mi formulario registro(listo)*/
+
+  form {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .btn-registro[type="submit"] {
+    background-color: #8C20BA;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  
+  .btn-registro[type="submit"]:hover {
+    background-color: #8C20BA;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    input {
+      width: calc(100% - 20px);
+    }
+  }
+  
+
+/*Categoria de inicio de sesion*/
+  .login-container {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+  }
+
+/* Estilos para el encabezado del formulario */
+  .login-container h1 {
+    text-align: center;
+    margin-top: 0;
+  }
+
+/* Estilos para el formulario */
+  #login-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+/* Estilos para los grupos de formulario */
+  #contenedor_inicio_sesion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    margin: 50px auto;
+  }
+
+  label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .item-boton-inicio-sesion {
+    background-color: #8C20BA;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .item-boton-inicio-sesion:hover {
+    background-color: #8C20BA;
+  }
+
+/*Categoria eventos conciertos(y otros)*/
+  #contenedor-conciertos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 70px;
+    margin-top: 50px;
+  }
+
+  .concierto {
+    width: 300px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .concierto:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .concierto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .concierto h3 {
+    margin: 20px;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .concierto p {
+    margin: 10px 20px;
+    font-size: 16px;
+    text-align: justify;
+  }
+
+/*Categoria formulario contacto*/
+  .contenedor-formulario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  }
+
+  #formulario-contacto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .input-formulario {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  .boton-formulario {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .boton-formulario:hover {
+    background-color: #0062cc;
+  }
+
+/*Mapa para api*/
+  .mapa {
+    width: 100%;
+    height: 500px;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+  }
+
+/*contendor eventos detalles*/
+  main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #evento {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .evento-info {
+    margin-right: 20px;
+  }
+
+  .cancha-info {
+    margin-left: 20px;
+  }
+
+  #evento img, .cancha-info img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  #evento ul, .cancha-info ul {
+    margin-top: 10px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .boton-compra {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .boton-compra:hover {
+    background-color: #0069d9;
+  }
+

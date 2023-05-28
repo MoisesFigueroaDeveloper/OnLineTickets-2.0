@@ -1,0 +1,70 @@
+{% extends 'app/base.html' %}
+
+<!--logo-->
+{% block encabezado %}
+    <!--Logo-->
+    <div class="contenedor_logo">
+        <a href="index.html">
+            <img class="item-logo" src="../IMG/OnLineTickets-Logo.png" alt="logo">
+        </a>
+    </div>
+    <!--Barra Buscador-->
+    <div class="contenedor_barrabusqueda">
+        <form class="item-barra-busqueda" action="" method="get">
+          <input type="text" placeholder="Buscar..." name="q">
+          <button class="boton-busqueda" type="submit"><span class="icono-lupa"></span>Buscar</button>
+        </form>
+      </div>
+
+    <!--Inicio sesion/Registro-->
+    <div class="contenedor_login">
+        <nav class="subcontenedor_login">
+            <ul>
+                <li class="item-inicio-sesion"><a href="{% url 'iniciosesion' %}">Iniciar Sesion</a></li>
+                <li class="item-registro"><a href="{% url 'registro' %}">Registrar</a></li>
+            </ul>
+        </nav>
+    </div>
+{% endblock %}
+
+<main>
+    <h2>Soporte</h2>
+    <p>Si tienes alguna pregunta o problema relacionado con nuestros servicios, no dudes en ponerte en contacto con nuestro equipo de soporte.</p>
+    <h3>Información de contacto</h3>
+    <ul>
+        <li>Teléfono: 123-456-7890</li>
+        <li>Correo electrónico: soporte@misitioweb.com</li>
+        <li>Dirección: 1234 Calle Principal, Ciudad, País</li>
+    </ul>
+    <h3>Formulario de contacto</h3>
+    <form action="#" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required>
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+    </form>
+</main>
+
+{% block footer %}
+<footer id="elementos_footers">
+    <div class="contenedor_sociales">
+      <ul>
+        <li><a href="contactanos">Contactanos</a></li>
+        <li><a href="soporte">Soporte</a></li>
+        <li><a href="quienessomos">Quienes Somos</a></li>
+      </ul>
+    </div>
+    <p>Siguenos</p>
+    <ul class="Redes_Sociales">
+        <li><a target="_blank" href="https://www.youtube.com/user/nombre-canal"><i class="fab fa-youtube"></i></a></li>
+        <li><a target="_blank" href="https://www.instagram.com/nombre-usuario/"><i class="fab fa-instagram"></i></a></li>
+        <li><a target="_blank" href="https://www.facebook.com/nombre-pagina/"><i class="fab fa-facebook"></i></a></li>
+    </ul>
+    <div class="derechos_autor">
+        <p>&copy; 2023 - Todos los derechos reservados</p>
+    </div>
+</footer>
+{% endblock %}
