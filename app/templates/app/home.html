@@ -1,11 +1,12 @@
 {% extends 'app/base.html' %}
+{% load static %}
 
 <!--Templates del encabezado-->
 {% block encabezado %}
     <!--Logo-->
     <div class="contenedor_logo">
         <a href="index.html">
-            <img class="item-logo" src="../IMG/OnLineTickets-Logo.png" alt="logo">
+            <img class="item-logo" src="{% static 'app/img/OnLineTickets-Logo.png' %}" alt="logo">
         </a>
     </div>
     <!--Barra Buscador-->
