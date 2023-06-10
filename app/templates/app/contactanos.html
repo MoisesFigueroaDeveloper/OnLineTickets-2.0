@@ -1,9 +1,31 @@
 {% extends 'app/base.html' %}
 {% load static %}
 
-    <header>
-		<h1>Contáctanos</h1>
-	</header>
+{% block encabezado %}
+	<!--Logo-->
+	<div class="contenedor_logo">
+		<a href="{% url 'home' %}">
+			<img class="item-logo" src="{% static 'app/img/OnLineTickets-Logo.png' %}" alt="logo">
+		</a>
+	</div>
+	<!--Barra Buscador-->
+	<div class="contenedor_barrabusqueda">
+		<form class="item-barra-busqueda" action="" method="get">
+		<input type="text" placeholder="Buscar..." name="q">
+		<button class="boton-busqueda" type="submit"><span class="icono-lupa"></span>Buscar</button>
+		</form>
+	</div>
+
+	<!--Inicio sesion/Registro-->
+	<div class="contenedor_login">
+		<nav class="subcontenedor_login">
+			<ul>
+				<li class="item-inicio-sesion"><a href="{% url 'iniciosesion' %}">Iniciar Sesion</a></li>
+				<li class="item-registro"><a href="{% url 'registro' %}">Registrar</a></li>
+			</ul>
+		</nav>
+	</div>
+{% endblock %}
 	
 	<main>
 		<form action="enviar.php" method="POST">
@@ -22,9 +44,9 @@
 	<footer id="elementos_footers">
 		<div class="contenedor_sociales">
 		  <ul>
-			<li><a href="contactanos">Contactanos</a></li>
-			<li><a href="soporte">Soporte</a></li>
-			<li><a href="quienessomos">Quienes Somos</a></li>
+			<li><a href="{% url 'contactanos' %}">Contactanos</a></li>
+        	<li><a href="{%url 'soporte' %}">Soporte</a></li>
+        	<li><a href="{% url 'quienessomos' %}">Quienes Somos</a></li>
 		  </ul>
 		</div>
 		<p>Siguenos</p>

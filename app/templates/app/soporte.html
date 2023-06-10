@@ -5,7 +5,7 @@
 {% block encabezado %}
     <!--Logo-->
     <div class="contenedor_logo">
-        <a href="index.html">
+        <a href="{% url 'home' %}">
             <img class="item-logo" src="../IMG/OnLineTickets-Logo.png" alt="logo">
         </a>
     </div>
@@ -53,9 +53,9 @@
 <footer id="elementos_footers">
     <div class="contenedor_sociales">
       <ul>
-        <li><a href="contactanos">Contactanos</a></li>
-        <li><a href="soporte">Soporte</a></li>
-        <li><a href="quienessomos">Quienes Somos</a></li>
+        <li><a href="{% url 'contactanos' %}">Contactanos</a></li>
+        <li><a href="{%url 'soporte' %}">Soporte</a></li>
+        <li><a href="{% url 'quienessomos' %}">Quienes Somos</a></li>
       </ul>
     </div>
     <p>Siguenos</p>

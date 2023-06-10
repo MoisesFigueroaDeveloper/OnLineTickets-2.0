@@ -10,23 +10,24 @@
   }
 
 /*Seccion Header de la pagina*/
-
-/* Header */
-/* Estilos para el encabezado */
-.contenedor_logo {
-  flex: 1;
+/*Logo*/
+.contenedor_encabezado {
   display: flex;
   align-items: center;
+}
+
+.contenedor_logo {
+  flex-grow: 1;
 }
 
 .item-logo {
-  width: 150px;
+  width: 170px;
 }
 
+/*Barra Busqueda*/
 .contenedor_barrabusqueda {
-  flex: 2;
-  display: flex;
-  align-items: center;
+  flex-grow: 2;
+  background-color: #ffffff;
 }
 
 .item-barra-busqueda {
@@ -61,8 +62,9 @@
   background-color: #6b1c99;
 }
 
-.subcontenedor_login {
-  flex: 1;
+/* Login */
+.contenedor_login {
+  flex-grow: 1;
   display: flex;
   justify-content: flex-end;
 }
@@ -91,90 +93,80 @@
   color: white;
 }
 
+
 /* Media Query */
 @media (max-width: 768px) {
-  .contenedor_logo {
-      margin-bottom: 20px;
+  .contenedor_encabezado {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .contenedor_barrabusqueda {
-      width: 100%;
-      margin-bottom: 20px;
+  .contenedor_logo,
+  .contenedor_barrabusqueda,
+  .contenedor_login {
+    flex-grow: 1;
+    margin-bottom: 20px;
   }
 
   .item-barra-busqueda {
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
   }
 
   .item-barra-busqueda input[type="text"] {
-      width: 100%;
-      margin-bottom: 10px;
+    width: 100%;
+    margin-bottom: 10px;
   }
 
   .boton-busqueda {
-      width: 100%;
-  }
-
-  .subcontenedor_login {
-      width: 100%;
+    width: 100%;
   }
 }
 
-
-
-
 /*Seccion Categorias de la pagina*/
+.contenedor_categorias {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
-  nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f2f2f2;
-    padding: 1rem;
-  }
+.categoria {
+  margin: 0 0.5rem;
+  flex-basis: 25%;
+  text-align: center;
+  background-color: #6b1c99; /* Agrega el color de fondo deseado */
+}
 
-  .contenedor_categorias {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
+li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+li a:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
   .categoria {
-    margin: 0 0.5rem;
-    flex-basis: 25%;
-    text-align: center;
+    flex-basis: 50%;
   }
+}
 
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  li a {
-    display: block;
-    padding: 0.5rem 1rem;
-    color: #333;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s ease;
-  }
-
-  li a:hover {
-    background-color: #333;
-    color: #fff;
-  }
-
-  @media (max-width: 768px) {
-    .categoria {
-      flex-basis: 50%;
-    }
-  }
 
 /*Categoria Banner estilo Carrusel(listo)*/
 
@@ -543,53 +535,5 @@
     border: 1px solid #ddd;
   }
 
-/*contendor eventos detalles*/
-  main {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
 
-  #evento {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .evento-info {
-    margin-right: 20px;
-  }
-
-  .cancha-info {
-    margin-left: 20px;
-  }
-
-  #evento img, .cancha-info img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  #evento ul, .cancha-info ul {
-    margin-top: 10px;
-    list-style: none;
-    padding: 0;
-  }
-
-  .boton-compra {
-    display: block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: all 0.2s ease-in-out;
-  }
-
-  .boton-compra:hover {
-    background-color: #0069d9;
-  }
 
