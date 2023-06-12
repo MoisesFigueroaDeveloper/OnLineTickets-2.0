@@ -27,17 +27,19 @@
 	</div>
 {% endblock %}
 	
-	<main>
-		<form action="enviar.php" method="POST">
-			<label for="nombre">Nombre:</label>
-			<input type="text" id="nombre" name="nombre" required><br><br>
-			<label for="email">Email:</label>
-			<input type="email" id="email" name="email" required><br><br>
-			<label for="mensaje">Mensaje:</label><br>
-			<textarea id="mensaje" name="mensaje" rows="6" cols="50" required></textarea><br><br>
-			<input type="submit" value="Enviar">
-		</form>
-	</main>
+	<h2>Contactanos</h2>
+	<form action="" class="formulario_contacto" method="post">
+
+		{% csrf_token %}
+
+		{{ form }}
+
+		<button type="submit" id="btnenviar" class="button">Enviar</button>
+	</form>
+	{{mensaje}}
+	<table id="tablacontatanos">
+		
+	</table>
     
     <!--Pie de Pagina-->
 {% block footer %}

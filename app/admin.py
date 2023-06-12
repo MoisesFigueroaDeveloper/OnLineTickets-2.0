@@ -17,4 +17,4 @@ class EventosAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Cliente, ClienteAdmin)
 admin.site.register(Eventos, EventosAdmin)
-admin.site.register(Contactanos, ContactanosAdmin)
+admin.site.register(Contactanos)
