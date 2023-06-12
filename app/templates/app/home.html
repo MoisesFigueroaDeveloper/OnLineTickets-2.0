@@ -63,7 +63,7 @@
 
 <!--Templates del banner-->
 {% block banner %}
-<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -102,6 +102,25 @@
     </button>
   </div>
 {% endblock%}
+
+<!--Eventos publicados-->
+{% load humanize %}
+<h2>Eventos</h2>
+<div class="eventos-publicados">
+  {% for evento in eventos %}
+    <div class="contenedor-eventos">
+      {% if evento.imagen %}
+        <img src="{{ evento.imagen.url }}" alt="{{ evento.nombre }}">
+      {% endif %}
+      <div>
+        <h2>{{ evento.nombre|capfirst }}</h2>
+        <p>{{ evento.descripcion }}</p>
+        <p>Categoría: {{ evento.categoria }}</p>
+        <p>Precio: ${{ evento.precio|intcomma }}</p>
+      </div>
+    </div>
+  {% endfor %}
+</div>
 
 <!--Templates del footer-->
 {% block footer %}

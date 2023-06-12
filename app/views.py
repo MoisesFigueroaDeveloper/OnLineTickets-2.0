@@ -1,9 +1,13 @@
 from django.shortcuts import render
-
+from .models import Eventos
 # Create your views here.
 
 def home(request):
-    return render(request, 'app/home.html')
+    eventos_list = Eventos.objects.all()
+    data = {
+        'eventos': eventos_list
+    }
+    return render(request, 'app/home.html', data)
 
 def contactanos(request):
     return render(request, 'app/contactanos.html')
