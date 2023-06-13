@@ -3,8 +3,10 @@ from .models import Eventos
 from .forms import ContactanosForm
 # Create your views here.
 
+#@login_required
 def home(request):
     eventos_list = Eventos.objects.all()
+    print(eventos_list)
     data = {
         'eventos': eventos_list
     }

@@ -1,33 +1,33 @@
 {% extends 'app/base.html' %}
 {% load static %}
 
-{% block encabezado %}
-    <!--Logo-->
-    <div class="contenedor_logo">
-        <a href="{% url 'home' %}">
-            <img class="item-logo" src="../IMG/OnLineTickets-Logo.png" alt="logo">
-        </a>
+{% block contenido %}
+    <div class="contenedor_encabezado">  
+        <!--Logo-->
+        <div class="contenedor_logo">
+            <a href="{% url 'home' %}">
+                <img class="item-logo" src="{% static 'app/img/OnLineTickets-Logo.png' %}" alt="logo">
+            </a>
+        </div>
+        <!--Barra Buscador-->
+        <div class="contenedor_barrabusqueda">
+            <form class="item-barra-busqueda" action="" method="get">
+            <input type="text" placeholder="Buscar..." name="q">
+            <button class="boton-busqueda" type="submit"><span class="icono-lupa"></span>Buscar</button>
+            </form>
+        </div>
+        <!--Inicio sesion/Registro-->
+        <div class="contenedor_login">
+            <nav class="subcontenedor_login">
+                <ul>
+                    <li class="item-inicio-sesion"><a href="{% url 'iniciosesion' %}">Iniciar Sesion</a></li>
+                    <li class="item-registro"><a href="{% url 'registro' %}">Registrar</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
-    <!--Barra Buscador-->
-    <div class="contenedor_barrabusqueda">
-        <form class="item-barra-busqueda" action="" method="get">
-          <input type="text" placeholder="Buscar..." name="q">
-          <button class="boton-busqueda" type="submit"><span class="icono-lupa"></span>Buscar</button>
-        </form>
-      </div>
 
-    <!--Inicio sesion/Registro-->
-    <div class="contenedor_login">
-        <nav class="subcontenedor_login">
-            <ul>
-                <a href="{% url 'iniciosesion' %}">Iniciar Sesion</a>
-                <li class="item-registro"><a href="{% url 'registro' %}">Registrar</a></li>
-            </ul>
-        </nav>
-    </div>
-{% endblock %}
-
-{% block formulario_iniciosesion%}
+<!--Formulario Inicio Sesion-->
     <form id="contenedor_inicio_sesion" class="formulario_inicio_sesion" action="/login" method="post">
         <label for="usuario" class="label_usuario">Nombre de usuario o correo electrónico:</label>
         <input type="text" id="usuario" name="usuario" class="input_usuario" required>
@@ -37,9 +37,7 @@
     
         <button class="item-boton-inicio-sesion" type="submit">Iniciar sesión</button>
     </form>
-{% endblock %}
 
-{% block footer %}
     <footer id="elementos_footers">
         <div class="contenedor_sociales">
         <ul>

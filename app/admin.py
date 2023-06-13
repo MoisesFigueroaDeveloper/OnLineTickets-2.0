@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Cliente, Eventos, Contactanos
+from .models import Cliente, Eventos, Contactanos 
 
 class ClienteAdmin(admin.ModelAdmin):
     list_display = ["nombre", "apellido", "correo"]

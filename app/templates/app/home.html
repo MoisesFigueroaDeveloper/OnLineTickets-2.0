@@ -1,8 +1,8 @@
 {% extends 'app/base.html' %}
 {% load static %}
 
-<!--Templates del encabezado-->
-{% block encabezado %}
+{% block contenido %}
+  <!--Header-->
   <div class="contenedor_encabezado">  
     <!--Logo-->
     <div class="contenedor_logo">
@@ -28,10 +28,8 @@
         </nav>
     </div>
   </div>
-{% endblock %}
 
-<!--Templates de navegacion en categorias-->
-{% block navegacion %}
+  <!--Nav Categorias-->
   <main class="contenedor_categorias">
     <section class="seccion">
         <ul>
@@ -59,10 +57,8 @@
 
     <div id="eventos-container"></div>
   </main>
-{% endblock %}
 
-<!--Templates del banner-->
-{% block banner %}
+  <!--Banner-->
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -101,51 +97,48 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-{% endblock%}
 
-<!--Eventos publicados-->
-{% load humanize %}
-<h2>Eventos</h2>
-<div class="eventos-publicados">
-  {% for evento in eventos %}
-    <div class="contenedor-eventos">
-      {% if evento.imagen %}
-        <img src="{{ evento.imagen.url }}" alt="{{ evento.nombre }}">
-      {% endif %}
-      <div>
-        <h2>{{ evento.nombre|capfirst }}</h2>
-        <p>{{ evento.descripcion }}</p>
-        <p>Categoría: {{ evento.categoria }}</p>
-        <p>Precio: ${{ evento.precio|intcomma }}</p>
+  <!--Eventos publicados-->
+  {% load humanize %}
+  <h2>Eventos</h2>
+  <div class="eventos-publicados">
+    {% for evento in eventos %}
+      <div class="contenedor-eventos">
+        {% if evento.imagen %}
+          <img src="{{ evento.imagen.url }}" alt="{{ evento.nombre }}">
+        {% endif %}
+        <div>
+          <h2>{{ evento.nombre|capfirst }}</h2>
+          <p>{{ evento.descripcion }}</p>
+          <p>Categoría: {{ evento.categoria }}</p>
+          <p>Precio: ${{ evento.precio|intcomma }}</p>
+        </div>
       </div>
-    </div>
-  {% endfor %}
-</div>
+    {% endfor %}
+  </div>
 
-<!--Templates del footer-->
-{% block footer %}
-<footer id="elementos_footers">
-    <div class="contenedor_sociales">
-      <ul>
-        <li><a href="{% url 'contactanos' %}">Contactanos</a></li>
-        <li><a href="{%url 'soporte' %}">Soporte</a></li>
-        <li><a href="{% url 'quienessomos' %}">Quienes Somos</a></li>
+  <!--Footer-->
+  <footer id="elementos_footers">
+      <div class="contenedor_sociales">
+        <ul>
+          <li><a href="{% url 'contactanos' %}">Contactanos</a></li>
+          <li><a href="{%url 'soporte' %}">Soporte</a></li>
+          <li><a href="{% url 'quienessomos' %}">Quienes Somos</a></li>
+        </ul>
+      </div>
+      <p>Siguenos</p>
+      <ul class="Redes_Sociales">
+          <li><a target="_blank" href="https://www.youtube.com/user/nombre-canal"><i class="fab fa-youtube"></i></a></li>
+          <li><a target="_blank" href="https://www.instagram.com/nombre-usuario/"><i class="fab fa-instagram"></i></a></li>
+          <li><a target="_blank" href="https://www.facebook.com/nombre-pagina/"><i class="fab fa-facebook"></i></a></li>
       </ul>
-    </div>
-    <p>Siguenos</p>
-    <ul class="Redes_Sociales">
-        <li><a target="_blank" href="https://www.youtube.com/user/nombre-canal"><i class="fab fa-youtube"></i></a></li>
-        <li><a target="_blank" href="https://www.instagram.com/nombre-usuario/"><i class="fab fa-instagram"></i></a></li>
-        <li><a target="_blank" href="https://www.facebook.com/nombre-pagina/"><i class="fab fa-facebook"></i></a></li>
-    </ul>
-    <div class="derechos_autor">
-        <p>&copy; 2023 - Todos los derechos reservados</p>
-    </div>
-</footer>
-{% endblock %}
+      <div class="derechos_autor">
+          <p>&copy; 2023 - Todos los derechos reservados</p>
+      </div>
+  </footer>
 
-<!--Script del boostrap para el carrusel-->
-{% block script%}
+
+  <!--Script del boostrap para el carrusel-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
