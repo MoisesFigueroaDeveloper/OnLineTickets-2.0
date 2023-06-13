@@ -1,0 +1,31 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+{% load humanize %}
+
+    <div class="card">
+        <div class="card body">
+            <h2>Listado de eventos</h2>
+        </div>
+    </div>
+    <table class="table table-striped table-hover table-responsive-sm">
+        <tr>
+            <th>nombres</th>
+            <th>descripcion</th>
+            <th>categoria</th>
+            <th>precio</th>
+        </tr>
+
+        {% for p in eventos%}
+
+        <tr>
+            <td>{{ p.nombre | title}}</td>
+            <td>{{ p.descripcion | title }}</td>
+            <td>{{ p.categoria | title }}</td>
+            <td>{{ p.precio | intcomma }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}

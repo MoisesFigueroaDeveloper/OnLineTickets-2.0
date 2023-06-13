@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Eventos
-from .forms import ContactanosForm
+from .forms import ContactanosForm, EventosForm
 # Create your views here.
 
 #@login_required
@@ -37,3 +37,28 @@ def registro(request):
     
 def iniciosesion(request):
         return render(request, 'app/iniciosesion.html')
+    
+def agregar_eventos(request):
+    
+    data = {
+        'form': EventosForm()
+    }
+    
+    if request.method == 'POST':
+        formulario = EventosForm(data=request.POST, files=request.FILES)
+        if formulario.id.valid():
+            formulario.save()
+            data["mensaje"] = "Guardado correctamente"
+        else:
+            data["form"] = formulario
+        
+    return render(request, 'app/eventos/agregar.html', data)
+
+def listar_eventos(request):
+    eventos = Eventos.objects.all()
+    
+    data = {
+        'eventos': eventos
+    }
+    
+    return render(request, 'app/eventos/listar.html', data)
