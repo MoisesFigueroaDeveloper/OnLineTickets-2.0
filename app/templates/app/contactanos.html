@@ -1,4 +1,5 @@
 {% extends 'app/base.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 
 {% block contenido %}
@@ -29,10 +30,12 @@
     </div>
 
 	<!--Formulario Contacto-->
+	{% load crispy_forms_tags %}
 	<h2>Contactanos!</h2>
 	<form action="" class="formulario_contacto">
+		{% csrf_token %}
 
-		{{ form }}
+		{{ form | crispy }}
 
 		<button type="submit" id="BtnEnviar" class="button">Enviar</button>
 	</form>
