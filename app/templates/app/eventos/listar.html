@@ -14,6 +14,7 @@
             <th>descripcion</th>
             <th>categoria</th>
             <th>precio</th>
+            <th>opciones</th>
         </tr>
 
         {% for p in eventos%}
@@ -23,6 +24,10 @@
             <td>{{ p.descripcion | title }}</td>
             <td>{{ p.categoria | title }}</td>
             <td>{{ p.precio | intcomma }}</td>
+            <td>
+                <a href="{% url 'modificar_eventos' p.id %}" class="btn btn-info btn-sm">Modificar</a>
+                <a href="{% url 'eliminar_eventos' p.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+            </td>
         </tr>
         {% endfor %}
     </table>

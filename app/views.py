@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Eventos
 from .forms import ContactanosForm, EventosForm
 # Create your views here.
@@ -62,3 +62,24 @@ def listar_eventos(request):
     }
     
     return render(request, 'app/eventos/listar.html', data)
+
+def modificar_eventos(request, id):
+    eventos = get_object_or_404(Eventos, id= id)
+    
+    data = {
+        'form': EventosForm(instance=eventos)
+    }
+    
+    if request.method == 'POST':
+        formulario = EventosForm(data=request.POST, instance=eventos, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="listar_eventos")
+        data["form"] = formulario
+        
+    return render(request, 'app/eventos/modificar.html', data)
+
+def eliminar_eventos(request, id):
+    eventos = get_object_or_404(Eventos, id=id)
+    eventos.delete()
+    return redirect(to="listar_eventos")
