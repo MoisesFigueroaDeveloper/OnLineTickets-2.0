@@ -19,6 +19,14 @@
 
 <body>
     {% block contenido%}
+
+    <!--Mensajes-->
+    {% if messages %}
+        {% for m in messages %}
+            {{m}}
+        {% endfor %}
+    {% endif %}
+    
     <!--Encabezado-->
     <header>
         
