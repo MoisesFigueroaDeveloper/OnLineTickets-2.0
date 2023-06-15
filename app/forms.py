@@ -1,5 +1,6 @@
 from django import forms
 from .models import Contactanos, Eventos
+from django.contrib.auth.forms import UserCreationForm
 
 class ContactanosForm(forms.ModelForm):
     
@@ -14,4 +15,5 @@ class EventosForm(forms.ModelForm):
         model = Eventos
         fields = '__all__'
         
-        
+class CustomUserCreationForm(UserCreationForm):
+    pass 

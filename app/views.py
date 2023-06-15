@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Eventos
-from .forms import ContactanosForm, EventosForm
+from .forms import ContactanosForm, EventosForm, CustomUserCreationForm
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.http import Http404 
@@ -35,11 +35,12 @@ def soporte(request):
 def quienessomos(request):
         return render(request, 'app/quienessomos.html')
 
-def registro(request):
-        return render(request, 'app/registro.html')
     
 def iniciosesion(request):
         return render(request, 'app/iniciosesion.html')
+    
+def registro(request):
+        return render(request, 'app/registro.html')
     
 def agregar_eventos(request):
     
@@ -94,3 +95,18 @@ def eliminar_eventos(request, id):
     eventos = get_object_or_404(Eventos, id=id)
     eventos.delete()
     return redirect(to="listar_eventos")
+
+def registro(request):
+    data = {
+        'form': CustomUserCreationForm()
+    }
+    
+    if request.method == 'POST':
+        formulario = CustomUserCreationForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Registro exitoso")
+            return redirect(to="iniciosesion")
+        data["form"] = formulario
+        
+    return render(request, 'registration/registro.html', data)
