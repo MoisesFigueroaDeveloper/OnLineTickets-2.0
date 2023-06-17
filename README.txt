@@ -17,3 +17,7 @@ hacer el migrate
 Revisar lo instalado con:
 
 - pip list
+
+Para corre pagina website 
+
+- python manage.py runserver
