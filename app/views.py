@@ -35,3 +35,15 @@ def registro(request):
     
 def iniciosesion(request):
         return render(request, 'app/iniciosesion.html')
+
+def carrito(request):
+        return render(request, 'app/carrito.html')
+    
+def adminHome(request):
+        return render(request, 'app/adminHome.html')
+    
+def adminUsuarios(request):
+        return render(request, 'app/adminUsuarios.html')
+    
+def adminEntradas(request):
+        return render(request, 'app/adminEntradas.html')
