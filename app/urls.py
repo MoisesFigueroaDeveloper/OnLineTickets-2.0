@@ -8,9 +8,9 @@ urlpatterns = [
     path('quienessomos/', quienessomos, name="quienessomos"),
     path('registro/', registro, name="registro"),
     path('iniciosesion/', iniciosesion, name="iniciosesion"),
-    path('iniciosesion/', carrito, name="carrito"),
-    path('iniciosesion/', adminHome, name="admin"),
-    path('iniciosesion/', adminUsuarios, name="adminUsuarios"),
-    path('iniciosesion/', adminEntradas, name="adminEntradas"),
+    path('carrito/', carrito, name="carrito"),
+    path('adminhome/', adminHome, name="admin"),
+    path('adminUsuarios/', adminUsuarios, name="adminUsuarios"),
+    path('adminEntradas/', adminEntradas, name="adminEntradas"),
 
 ]
