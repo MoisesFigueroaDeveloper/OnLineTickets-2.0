@@ -1,6 +1,11 @@
 from django import forms
+from django.db import models
 from .models import Contactanos, Eventos
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import AbstractUser
+from django.core.validators import RegexValidator
+from .models import Cliente
+
 
 class ContactanosForm(forms.ModelForm):
     
@@ -17,3 +22,5 @@ class EventosForm(forms.ModelForm):
         
 class CustomUserCreationForm(UserCreationForm):
     pass 
+
+

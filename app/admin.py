@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Cliente, Eventos, Contactanos 
 
 class ClienteAdmin(admin.ModelAdmin):
-    list_display = ["nombre", "apellido", "correo"]
+    list_display = ["nombre", "apellido", "rut", "correo"]
     search_fields = ["nombre"]
     list_per_page = 12
 
@@ -12,6 +12,8 @@ class EventosAdmin(admin.ModelAdmin):
     search_fields = ["nombre"]
     list_filter = ["categoria"]
     list_per_page = 12
+    
+
     
 
 # Register your models here.

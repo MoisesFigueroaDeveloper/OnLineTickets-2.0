@@ -1,20 +1,29 @@
+import re
+from django.core.exceptions import ValidationError
+from django.core.validators import RegexValidator
 from django.db import models
 
-# Create your models here.
+rut_regex = r'^\d{7,8}-[0-9kK]{1}$'
+rut_validator = RegexValidator(rut_regex, 'El RUT debe tener el siguiente formato: 19999999-9 o 9999999-9 o 19999999-K.')
+
 class Cliente(models.Model):
+    rut = models.CharField(max_length=12, unique=True, validators=[rut_validator], default='00000000-0')
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     correo = models.EmailField(max_length=100)
     password = models.CharField(max_length=50)
-    
+
     def __str__(self):
         return f"{self.nombre} {self.apellido}"
+
+
     
 class Eventos(models.Model):
     nombre = models.CharField(max_length=50)
     descripcion = models.TextField(max_length=100)
     categoria = models.CharField(max_length=50)
     precio = models.IntegerField()
+    stock = models.IntegerField(default=50)
     imagen = models.ImageField(upload_to="eventos", null=True)
     def __str__(self):
         return self.nombre

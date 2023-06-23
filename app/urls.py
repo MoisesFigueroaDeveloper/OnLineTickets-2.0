@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import contactanos, home, soporte, quienessomos, registro, iniciosesion, agregar_eventos, listar_eventos, modificar_eventos, eliminar_eventos, registro
-
+from . import views
 urlpatterns = [
     path('', home, name="home"),
     path('contactanos/', contactanos, name="contactanos"),
@@ -13,6 +13,7 @@ urlpatterns = [
     path('modificar-eventos/<int:id>/', modificar_eventos, name="modificar_eventos"),
     path('eliminar-eventos/<int:id>/', eliminar_eventos, name="eliminar_eventos"),
     path('registro/', registro, name="registro"),
+    path('eventos/detalles/<int:evento_id>/', views.detalle_evento, name='evento_detalles'),
 ]
 
 

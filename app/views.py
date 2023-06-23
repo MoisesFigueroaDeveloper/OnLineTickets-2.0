@@ -42,6 +42,7 @@ def iniciosesion(request):
 def registro(request):
         return render(request, 'app/registro.html')
     
+#-----------------------CRUD------------------------
 def agregar_eventos(request):
     
     data = {
@@ -96,6 +97,9 @@ def eliminar_eventos(request, id):
     eventos.delete()
     return redirect(to="listar_eventos")
 
+#-----------------------FIN CRUD------------------------
+
+#------------Formulario Registro------------------------
 def registro(request):
     data = {
         'form': CustomUserCreationForm()
@@ -110,3 +114,14 @@ def registro(request):
         data["form"] = formulario
         
     return render(request, 'registration/registro.html', data)
+
+#-----------------------FIN Formulario Registro------------------------
+
+def detalle_evento(request, evento_id):
+    evento = get_object_or_404(Eventos, id=evento_id)
+    
+    context = {
+        'evento': evento
+    }
+    
+    return render(request, 'app/detalle_evento.html', context)

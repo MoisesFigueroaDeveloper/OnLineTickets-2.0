@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalles del Evento</title>
+</head>
+<body>
+    <h1>{{ evento.nombre }}</h1>
+    <p><strong>Categoría:</strong> {{ evento.categoria }}</p>
+    <p><strong>Precio:</strong> {{ evento.precio }}</p>
+    <p><strong>Stock disponible:</strong> {{ evento.stock }}</p>
+    <p><strong>Descripción:</strong> {{ evento.descripcion }}</p>
+    <img src="{{ evento.imagen.url }}" alt="Imagen del evento">
+</body>
+</html>
