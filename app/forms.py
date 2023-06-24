@@ -20,6 +20,24 @@ class EventosForm(forms.ModelForm):
         model = Eventos
         fields = '__all__'
         
+class RegistroFormulario(forms.ModelForm):
+    class Meta:
+        model = Cliente
+        fields = ['nombre', 'apellido', 'rut', 'correo', 'password']
+        widgets = {
+            'password': forms.PasswordInput()
+        }
+        
+class InicioSesionForm(forms.ModelForm):
+    class Meta:
+        model = Cliente
+        fields = ['correo', 'password']
+        widgets = {
+            'password': forms.PasswordInput()
+        }
+
+
+        
 class CustomUserCreationForm(UserCreationForm):
     pass 
 

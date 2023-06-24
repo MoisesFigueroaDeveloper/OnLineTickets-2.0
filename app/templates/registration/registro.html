@@ -8,7 +8,6 @@
 </head>
 
 <body>
-    {% load crispy_forms_tags %}
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6 offset-md-3">
@@ -16,14 +15,10 @@
                     <div class="card-body">
                         <h2>Registro de usuario</h2>
                         <hr>
-                        <form action="" method="post">
+                        <form method="post">
                             {% csrf_token %}
-                            {{ form.nombre.label_tag }} {{ form.nombre }}
-                            {{ form.apellido.label_tag }} {{ form.apellido }}
-                            {{ form.rut.label_tag }} {{ form.rut }}
-                            {{ form.correo.label_tag }} {{ form.correo }}
-                            {{ form.password1.label_tag }} {{ form.password1 }}
-                            <input type="submit" value="Registrarse">
+                            {{ formulario.as_p }}
+                            <button type="submit">Registrarse</button>
                         </form>
                     </div>
                 </div>

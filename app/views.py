@@ -4,6 +4,9 @@ from .forms import ContactanosForm, EventosForm, CustomUserCreationForm
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.http import Http404 
+from .forms import RegistroFormulario
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
 # Create your views here.
 
 #@login_required
@@ -15,6 +18,7 @@ def home(request):
     }
     return render(request, 'app/home.html', data)
 
+#-----------Formulario Contactanos-----------
 def contactanos(request):
     data = {
         'form': ContactanosForm()
@@ -36,13 +40,26 @@ def quienessomos(request):
         return render(request, 'app/quienessomos.html')
 
     
-def iniciosesion(request):
-        return render(request, 'app/iniciosesion.html')
+def login(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+            # Redirigir a la página de inicio o a la página deseada después de iniciar sesión
+            return redirect('home')  # Reemplaza 'home' con la URL de la página deseada
+        else:
+            # Mostrar un mensaje de error indicando que las credenciales son inválidas
+            error_message = 'Las credenciales de inicio de sesión son inválidas.'
+            return render(request, 'registration/login.html', {'error_message': error_message})
+    else:
+        return render(request, 'registration/login.html')
     
-def registro(request):
-        return render(request, 'app/registro.html')
     
 #-----------------------CRUD------------------------
+
+#-----------Agregar Eventos-----------
 def agregar_eventos(request):
     
     data = {
@@ -59,6 +76,7 @@ def agregar_eventos(request):
         
     return render(request, 'app/eventos/agregar.html', data)
 
+#-----------Listar Eventos-----------
 def listar_eventos(request):
     eventos = Eventos.objects.all()
     page = request.GET.get('page', 1)
@@ -75,6 +93,7 @@ def listar_eventos(request):
     
     return render(request, 'app/eventos/listar.html', data)
 
+#-----------Modificar Eventos-----------
 def modificar_eventos(request, id):
     eventos = get_object_or_404(Eventos, id= id)
     
@@ -92,6 +111,7 @@ def modificar_eventos(request, id):
         
     return render(request, 'app/eventos/modificar.html', data)
 
+#-----------Eliminar Eventos-----------
 def eliminar_eventos(request, id):
     eventos = get_object_or_404(Eventos, id=id)
     eventos.delete()
@@ -101,19 +121,16 @@ def eliminar_eventos(request, id):
 
 #------------Formulario Registro------------------------
 def registro(request):
-    data = {
-        'form': CustomUserCreationForm()
-    }
-    
     if request.method == 'POST':
-        formulario = CustomUserCreationForm(data=request.POST)
+        formulario = RegistroFormulario(request.POST)
         if formulario.is_valid():
             formulario.save()
-            messages.success(request, "Registro exitoso")
-            return redirect(to="iniciosesion")
-        data["form"] = formulario
-        
-    return render(request, 'registration/registro.html', data)
+            # Redirigir a la página de éxito
+    else:
+        formulario = RegistroFormulario()
+    
+    return render(request, 'registration/registro.html', {'formulario': formulario})
+
 
 #-----------------------FIN Formulario Registro------------------------
 
