@@ -1,5 +1,6 @@
 django == 3.1.2
 pillow 
+django-bootstrap-v5
 django-admin-interface
 django-crispy-forms
 crispy_bootstrap5
