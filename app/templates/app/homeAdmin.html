@@ -1,0 +1,14 @@
+{% extends "app/baseAdmin.html" %}
+
+{% block titulo%}Home Administrador{%endblock%}
+
+{% block body %}
+<div class="container">
+    <h1>Estamos en el home de adminstrador</h1>
+</div>
+<ul>
+    {% for c in clientes%}
+    <li>{{c.nombre}} <li>{{c.apellido}}</li></li>
+    {% endfor %}
+</ul>
+{% endblock %}
