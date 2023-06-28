@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Eventos
-from .forms import ContactanosForm, EventosForm, CustomUserCreationForm
+from .forms import ContactanosForm, EventosForm, CustomUserCreationForm, CarritoForm
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.http import Http404 
 from .forms import RegistroFormulario
 from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
+from django.contrib import messages
+
 # Create your views here.
 
 #@login_required
@@ -134,6 +135,7 @@ def registro(request):
 
 #-----------------------FIN Formulario Registro------------------------
 
+#------------Detalles Evento------------------------
 def detalle_evento(request, evento_id):
     evento = get_object_or_404(Eventos, id=evento_id)
     
@@ -142,3 +144,44 @@ def detalle_evento(request, evento_id):
     }
     
     return render(request, 'app/detalle_evento.html', context)
+
+#------------Fin Detalles Evento------------------------
+
+#------------Carrito compras------------------------
+def carrito_compras(request):
+    if request.method == 'POST':
+        form = CarritoForm(request.POST)
+        if form.is_valid():
+            evento_id = form.cleaned_data['evento_id']
+            stock = form.cleaned_data['stock']
+
+            # Obtener el objeto Evento según el evento_id
+            Eventos = Eventos.objects.get(id=evento_id)
+
+            # Agregar el evento al carrito
+            # Aquí puedes realizar las acciones necesarias para el carrito de compras sin referenciar al campo 'usuario'
+
+            messages.success(request, 'Entradas agregadas al carrito.')
+            return redirect('carritocompras')
+    else:
+        form = CarritoForm()
+
+    # Obtener los elementos del carrito del usuario actual
+    # Aquí puedes realizar las acciones necesarias para mostrar los elementos del carrito sin referenciar al campo 'usuario'
+
+    total_entradas = 0
+    total = 0
+    # Calcula el total de entradas y el precio total sin referenciar al campo 'usuario'
+
+    context = {
+        'form': form,
+        'carrito': [],  # Puedes reemplazar esto con la lógica para obtener los elementos del carrito sin referenciar al campo 'usuario'
+        'total_entradas': total_entradas,
+        'total': total,
+    }
+
+    return render(request, 'carritocompra.html', context)
+
+#------------Fin Carrito compras------------------------
+
+
