@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import contactanos, home, soporte, quienessomos, registro, login, agregar_eventos, listar_eventos, modificar_eventos, eliminar_eventos, homeAdmin, gestionEventos, gestionEventosEditar, gestionUsuarios, gestionUsuariosEditar
+from .views import contactanos, home, soporte, quienessomos, registro, login, agregar_eventos, listar_eventos, modificar_eventos, eliminar_eventos, carrito_compras
 from . import views
 
 urlpatterns = [
@@ -14,6 +15,7 @@ urlpatterns = [
     path('modificar-eventos/<int:id>/', modificar_eventos, name="modificar_eventos"),
     path('eliminar-eventos/<int:id>/', eliminar_eventos, name="eliminar_eventos"),
     path('eventos/detalles/<int:evento_id>/', views.detalle_evento, name='evento_detalles'),
+    path('carritocompras/', carrito_compras, name="carrito_compras"),
     
     path('homeAdmin/', homeAdmin, name="homeAdmin"),
     path('gestionEventos/', gestionEventos, name="gestionEventos"),
