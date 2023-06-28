@@ -21,4 +21,6 @@ urlpatterns = [
     path('gestionUsuarios/', gestionUsuarios, name="gestionUsuarios"),
     path('gestionUsuariosEditar/', gestionUsuariosEditar, name="gestionUsuariosEditar"),
     path('registrarUsuario/', views.registrarUsuario),
+    path('eliminarUsuario/<rut>', views.eliminarUsuario),
+    path('modificarUsuario/<rut>', views.modificarUsuario),
 ]

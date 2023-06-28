@@ -174,3 +174,14 @@ def registrarUsuario(request):
     cliente=Cliente.objects.create(nombre=nombre, apellido=apellido, rut=rut, correo=correo, password=contraseña)
     
     return redirect('/gestionUsuarios')
+
+def eliminarUsuario(request, rut):
+    cliente = Cliente.objects.get(rut=rut)
+    cliente.delete()
+    
+    return redirect('/gestionUsuarios')
+
+def modificarUsuario(request, rut):
+    cliente = Cliente.objects.get(rut=rut)
+    
+    return render(request, 'app/gestionUsuariosEditar.html', {"clientes": cliente})

@@ -48,6 +48,7 @@
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Correo</th>
+                        <th colspan="2">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,6 +59,8 @@
                         <td>{{c.nombre}}</td>
                         <td>{{c.apellido}}</td>
                         <td>{{c.correo}}</td>
+                        <td><a href="/modificarUsuario/{{c.rut}}" class="btn btn-warning">Editar</a></td>
+                        <td><a href="/eliminarUsuario/{{c.rut}}" class="btn btn-danger">Eliminar</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
