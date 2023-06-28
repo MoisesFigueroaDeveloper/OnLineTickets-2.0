@@ -1,0 +1,73 @@
+{% extends "app/baseAdmin.html" %}
+{% block titulo%}Gestion de Usuarios{%endblock%}
+{% block actUsuario%}active{%endblock%}
+
+{% block body%}
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <h2>Gestion de Usuarios</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registrarUsuario/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <div class="form-outline form-white mb-4">
+                            <label class="form-label" for="inputFirstName">Nombre</label>
+                            <input placeholder="Nombre" type="text" id="inputFirstName" name="inputFirstName" class="form-control form-control-lg" required/>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                            <label class="form-label" for="inputLastName">Apellido</label>
+                            <input placeholder="Apellido" type="text" id="inputLastName" name="inputLastName" class="form-control form-control-lg" required/>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                            <label class="form-label" for="inputRut">Rut</label>
+                            <input placeholder="Rut" type="text" id="inputRut" name="inputRut" class="form-control form-control-lg" required/>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                            <label class="form-label" for="inputEmail">Correo electronico</label>
+                            <input placeholder="Correo Electronico" type="email" id="inputEmail" name="inputEmail" class="form-control form-control-lg" required/>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                            <label class="form-label" for="typePassword">Contraseña</label>
+                            <input placeholder="Contraseña" type="password" id="typePassword" name="typePassword"
+                                class="form-control form-control-lg" required/>                                        
+                        </div>
+                        <div class="d-flex justify-content-center text-center">
+                            <button type="submit" class="btn btn-success btn-lg">Registrarse</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Rut</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <h1>Listado de Usuarios</h1>
+                    {% for c in clientes%}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{c.rut}}</td>
+                        <td>{{c.nombre}}</td>
+                        <td>{{c.apellido}}</td>
+                        <td>{{c.correo}}</td>
+                        <td><a href="/modificarUsuario/{{c.rut}}" class="btn btn-warning">Editar</a></td>
+                        <td><a href="/eliminarUsuario/{{c.rut}}" class="btn btn-danger">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock%}

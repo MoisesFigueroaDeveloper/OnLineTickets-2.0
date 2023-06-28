@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Eventos
+from .models import Eventos, Cliente
 from .forms import ContactanosForm, EventosForm, CustomUserCreationForm
 from django.contrib import messages
 from django.core.paginator import Paginator
@@ -142,3 +142,64 @@ def detalle_evento(request, evento_id):
     }
     
     return render(request, 'app/detalle_evento.html', context)
+
+#----------------------ADMINISTRADOR----------------------------------
+
+def homeAdmin(request):
+    return render(request, 'app/homeAdmin.html')
+
+def gestionEventos(request):
+    eventos = Eventos.objects.all()
+    return render(request, 'app/gestionEventos.html', {"eventos": eventos})
+
+def gestionUsuarios(request):
+    clientes = Cliente.objects.all()
+    return render(request, 'app/gestionUsuarios.html', {"clientes": clientes})
+
+def gestionEventosEditar(request):
+    eventos = Eventos.objects.all()
+    return render(request, 'app/gestionEventosEditar.html', {"eventos": eventos})
+
+def gestionUsuariosEditar(request):
+    clientes = Cliente.objects.all()
+    return render(request, 'app/gestionUsuariosEditar.html', {"clientes": clientes})
+
+def registrarUsuario(request):
+    nombre=request.POST['inputFirstName']
+    apellido=request.POST['inputLastName']
+    rut=request.POST['inputRut']
+    correo=request.POST['inputEmail']
+    contraseña=request.POST['typePassword']
+    
+    cliente=Cliente.objects.create(nombre=nombre, apellido=apellido, rut=rut, correo=correo, password=contraseña)
+    
+    return redirect('/gestionUsuarios')
+
+def eliminarUsuario(request, rut):
+    cliente = Cliente.objects.get(rut=rut)
+    cliente.delete()
+    
+    return redirect('/gestionUsuarios')
+
+def modificarUsuario(request, rut):
+    cliente = Cliente.objects.get(rut=rut)
+    
+    return render(request, 'app/gestionUsuariosEditar.html', {"cliente": cliente})
+
+def editarUsuario(request):
+    nombre=request.POST['inputFirstName']
+    apellido=request.POST['inputLastName']
+    rut=request.POST['inputRut']
+    correo=request.POST['inputEmail']
+    contraseña=request.POST['typePassword']
+    
+    cliente = Cliente.objects.get(rut=rut)
+    cliente.nombre = nombre
+    cliente.apellido = apellido
+    cliente.rut = rut
+    cliente.correo = correo
+    cliente.contraseña = contraseña
+    
+    cliente.save()
+    
+    return redirect('/gestionUsuarios')

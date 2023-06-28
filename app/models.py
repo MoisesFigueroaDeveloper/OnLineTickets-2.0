@@ -14,14 +14,20 @@ class Cliente(models.Model):
     password = models.CharField(max_length=50)
 
     def __str__(self):
-        return f"{self.nombre} {self.apellido}"
-
+        texto = "{0} {1}"
+        return texto(self.nombre, self.apellido)
 
     
 class Eventos(models.Model):
+    EVENTOS = (
+        (0, 'Musica'),
+        (1, 'Deporte'),
+        (2, 'Teatro'),
+        (3, 'Familia'),
+    )
     nombre = models.CharField(max_length=50)
     descripcion = models.TextField(max_length=100)
-    categoria = models.CharField(max_length=50)
+    categoria = models.IntegerField(choices=EVENTOS)
     precio = models.IntegerField()
     stock = models.IntegerField(default=50)
     imagen = models.ImageField(upload_to="eventos", null=True)
