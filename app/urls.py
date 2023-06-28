@@ -23,4 +23,5 @@ urlpatterns = [
     path('registrarUsuario/', views.registrarUsuario),
     path('eliminarUsuario/<rut>', views.eliminarUsuario),
     path('modificarUsuario/<rut>', views.modificarUsuario),
+    path('editarUsuario/', views.editarUsuario),
 ]

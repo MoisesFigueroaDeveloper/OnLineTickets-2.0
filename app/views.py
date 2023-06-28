@@ -184,4 +184,22 @@ def eliminarUsuario(request, rut):
 def modificarUsuario(request, rut):
     cliente = Cliente.objects.get(rut=rut)
     
-    return render(request, 'app/gestionUsuariosEditar.html', {"clientes": cliente})
+    return render(request, 'app/gestionUsuariosEditar.html', {"cliente": cliente})
+
+def editarUsuario(request):
+    nombre=request.POST['inputFirstName']
+    apellido=request.POST['inputLastName']
+    rut=request.POST['inputRut']
+    correo=request.POST['inputEmail']
+    contraseña=request.POST['typePassword']
+    
+    cliente = Cliente.objects.get(rut=rut)
+    cliente.nombre = nombre
+    cliente.apellido = apellido
+    cliente.rut = rut
+    cliente.correo = correo
+    cliente.contraseña = contraseña
+    
+    cliente.save()
+    
+    return redirect('/gestionUsuarios')
