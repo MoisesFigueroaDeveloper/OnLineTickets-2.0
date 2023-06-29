@@ -10,5 +10,6 @@
     <p><strong>Stock disponible:</strong> {{ evento.stock }}</p>
     <p><strong>Descripción:</strong> {{ evento.descripcion }}</p>
     <img src="{{ evento.imagen.url }}" alt="Imagen del evento">
+    <a href="{% url 'carrito_compras' %}">Adquirir entradas</a>
 </body>
 </html>
