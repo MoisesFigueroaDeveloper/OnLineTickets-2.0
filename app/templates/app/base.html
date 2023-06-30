@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OnLineTickets</title>
+    <title>{% block titulo%} {% endblock %}</title>
     {% load static %}
     <!--<link rel="stylesheet" href="{% static 'app/css/style.css' %}">-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -36,6 +36,21 @@
             <!--Contenido que va a quedar dentro del manu hamburguesa-->
             <div class="collapse navbar-collapse" id="navbarNav">
 
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link {% block actMusica%} {%endblock%}" href="{% url 'musica' %}">Musica</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% block actDeporte%} {%endblock%}" href="{% url 'deporte' %}">Deporte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% block actTratro%} {%endblock%}" href="{% url 'teatro' %}">Teatro</a>
+                    </li>
+                    <li>
+                        <a class="nav-link {% block actFamilia%} {%endblock%}" href="{% url 'familia' %}">Familia</a>
+                    </li>
+                </ul>
+
                 <!--Search-->
                 <div class="container">
                     <!-- no borren esto, es solo un espacio en el navbar para que quede centrada la barrade busqueda-->
@@ -45,6 +60,9 @@
                         <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
                         <button class="btn btn-outline-dark rounded m-1" type="submit">Buscar</button>
                     </form>
+                </div>
+                <div class="container">
+                    <!-- no borren esto, es solo un espacio en el navbar para que quede centrada la barrade busqueda-->
                 </div>
                 <div class="container">
                     <!--Botones del lado derecho-->
@@ -71,19 +89,6 @@
             </div>
         </div>
     </nav>
-
-    <!--CATEGORIAS-->
-    <div class="d-flex justify-content-center">
-        <!--Sejustifico el cotenido dentro del d-flex en el centro-->
-        <div class="btn-group categorias" style="height: 50px; width: 1000px;">
-            <a href="{% url 'musica' %}" class="btn btn-outline-primary rounded me-5 h-100"
-                aria-current="page">Musica</a>
-            <a href="{% url 'deporte' %}" class="btn btn-outline-primary rounded me-5 h-100">Deporte</a>
-            <a href="{% url 'teatro' %}" class="btn btn-outline-primary rounded me-5 h-100">Teatro</a>
-            <a href="{% url 'familia' %}" class="btn btn-outline-primary rounded me-5 h-100">Familia</a>
-        </div>
-    </div>
-    <br>
 
     {% block contenido%}
 
@@ -120,7 +125,7 @@
 
     </footer>-->
 
-    
+
 
     {% endblock %}
     <!--Scripts-->
