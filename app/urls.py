@@ -35,4 +35,6 @@ urlpatterns = [
     path('eliminarUsuario/<rut>', views.eliminarUsuario),
     path('modificarUsuario/<rut>', views.modificarUsuario),
     path('editarUsuario/', views.editarUsuario),
+    path('resumenPedido.html/', views.resumenPedido, name='resumenPedido'),
+    path('pago.html/', views.pago, name='pago'),
 ]
