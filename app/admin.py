@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import Cliente, Eventos, Contactanos 
+from django.contrib.auth.models import User
+
 
 class ClienteAdmin(admin.ModelAdmin):
     list_display = ["nombre", "apellido", "rut", "correo"]
