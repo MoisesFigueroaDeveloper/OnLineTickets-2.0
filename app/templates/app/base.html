@@ -1,63 +1,135 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OnLineTickets</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="{% static 'app/css/style.css' %}">-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
 
 </head>
 
 <body>
+
+    <!--Barra de navegacion-->
+    <nav class="navbar navbar-expand-lg">
+        <!--Nombre marca-->
+        <div class="container-fluid">
+
+            <!--Marca-->
+            <a class="navbar-brand " href="{% url 'home' %}">
+                OnlineTickets
+            </a>
+
+            <!--Crea un boton hamburgueza-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!--Contenido que va a quedar dentro del manu hamburguesa-->
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <!--Search-->
+                <div class="container">
+                    <!-- no borren esto, es solo un espacio en el navbar para que quede centrada la barrade busqueda-->
+                </div>
+                <div class="container">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+                        <button class="btn btn-outline-dark rounded m-1" type="submit">Buscar</button>
+                    </form>
+                </div>
+                <div class="container">
+                    <!--Botones del lado derecho-->
+                    <ul class="navbar-nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="btn btn-outline-dark rounded m-1" href="/html/user/Sign_In.html">Iniciar
+                                sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-dark rounded m-1" href="/html/user/registro.html">
+                                <i class="bi bi-cart4"></i>Registrarse</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class=" btn btn-outline-dark rounded m-1" href="/html/pago/carritoCompras.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-cart4" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!--CATEGORIAS-->
+    <div class="d-flex justify-content-center">
+        <!--Sejustifico el cotenido dentro del d-flex en el centro-->
+        <div class="btn-group categorias" style="height: 50px; width: 1000px;">
+            <a href="{% url 'musica' %}" class="btn btn-outline-primary rounded me-5 h-100"
+                aria-current="page">Musica</a>
+            <a href="{% url 'deporte' %}" class="btn btn-outline-primary rounded me-5 h-100">Deporte</a>
+            <a href="{% url 'teatro' %}" class="btn btn-outline-primary rounded me-5 h-100">Teatro</a>
+            <a href="{% url 'familia' %}" class="btn btn-outline-primary rounded me-5 h-100">Familia</a>
+        </div>
+    </div>
+    <br>
+
     {% block contenido%}
 
-    <!--Mensajes-->
+    <!--Mensajes
     {% if messages %}
-        {% for m in messages %}
-            {{m}}
-        {% endfor %}
+    {% for m in messages %}
+    {{m}}
+    {% endfor %}
     {% endif %}
-    
-    <!--Encabezado-->
-    <header>
-        
-    </header>
-    
-    <!--Categorias-->
-    <nav id="category">
-        
-    </nav>
-    
-    <!--Banner Carrusel-->
-    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-        
-    </div>
-      
-    <!--Eventos publicados-->
-    <section class="eventos">
-        
-    </section>
-  
-     
-    <!--Pie de pagina-->
-    <footer id="elementos_footers">
-        
-    </footer>
 
-    <!--Scripts-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+    Encabezado
+    <header>
+
+    </header>
+
+    Categorias
+    <nav id="category">
+
+    </nav>
+
+    Banner Carrusel
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+
+    </div>
+
+    Eventos publicados
+    <section class="eventos">
+
+    </section>-->
+
+
+    <!--Pie de pagina
+    <footer id="elementos_footers">
+
+    </footer>-->
+
     
+
     {% endblock %}
+    <!--Scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -5,6 +5,13 @@ from . import views
 
 urlpatterns = [
     path('', home, name="home"),
+    #---EVENTOS---#
+    path('Eventos/musica/', views.musica, name="musica"),
+    path('Eventos/deporte/', views.deporte, name="deporte"),
+    path('Eventos/teatro', views.teatro, name="teatro"),
+    path('Eventos/familia', views.familia , name="familia"),
+    #---PAGO---#
+    #---USUARIOS---#
     path('contactanos/', contactanos, name="contactanos"),
     path('soporte/', soporte, name="soporte"),
     path('quienessomos/', quienessomos, name="quienessomos"),
@@ -16,7 +23,7 @@ urlpatterns = [
     path('eliminar-eventos/<int:id>/', eliminar_eventos, name="eliminar_eventos"),
     path('eventos/detalles/<int:evento_id>/', views.detalle_evento, name='evento_detalles'),
     path('carritocompras/', carrito_compras, name="carrito_compras"),
-    
+    #---ADMIN---#
     path('homeAdmin/', homeAdmin, name="homeAdmin"),
     path('gestionEventos/', gestionEventos, name="gestionEventos"),
     path('gestionEventosEditar/', gestionEventosEditar, name="gestionEventosEditar"),

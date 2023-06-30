@@ -242,9 +242,23 @@ def editarUsuario(request):
     cliente.nombre = nombre
     cliente.apellido = apellido
     cliente.rut = rut
-    cliente.correo = correo
+    cliente.correo = correo#---EVENTOS---#
     cliente.contraseña = contraseña
     
     cliente.save()
     
     return redirect('/gestionUsuarios')
+
+#---EVENTOS---#
+
+def musica(request):
+    return render(request, 'app/Eventos/musica.html')
+
+def deporte(request):
+    return render(request, 'app/Eventos/deporte.html')
+
+def teatro(request):
+    return render(request, 'app/Eventos/teatro.html')
+
+def familia(request):
+    return render(request, 'app/Eventos/familia.html')
