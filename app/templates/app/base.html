@@ -36,18 +36,18 @@
             <!--Contenido que va a quedar dentro del manu hamburguesa-->
             <div class="collapse navbar-collapse" id="navbarNav">
 
-                <ul class="navbar-nav">
+                <ul class="navbar-nav nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link {% block actMusica%} {%endblock%}" href="{% url 'musica' %}">Musica</a>
+                        <a class="nav-link {% block actMusica%}{%endblock%}"  href="{% url 'musica' %}">Musica</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% block actDeporte%} {%endblock%}" href="{% url 'deporte' %}">Deporte</a>
+                        <a class="nav-link {% block actDeporte%}{%endblock%}" href="{% url 'deporte' %}">Deporte</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% block actTratro%} {%endblock%}" href="{% url 'teatro' %}">Teatro</a>
+                        <a class="nav-link {% block actTratro%}{%endblock%}" href="{% url 'teatro' %}">Teatro</a>
                     </li>
                     <li>
-                        <a class="nav-link {% block actFamilia%} {%endblock%}" href="{% url 'familia' %}">Familia</a>
+                        <a class="nav-link {% block actFamilia%}{%endblock%}" href="{% url 'familia' %}">Familia</a>
                     </li>
                 </ul>
 
@@ -68,15 +68,15 @@
                     <!--Botones del lado derecho-->
                     <ul class="navbar-nav justify-content-end">
                         <li class="nav-item">
-                            <a class="btn btn-outline-dark rounded m-1" href="/html/user/Sign_In.html">Iniciar
+                            <a class="btn btn-outline-dark rounded m-1" href="{% url 'login' %}">Iniciar
                                 sesión</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-dark rounded m-1" href="/html/user/registro.html">
+                            <a class="btn btn-outline-dark rounded m-1" href="{% url 'registro' %}">
                                 <i class="bi bi-cart4"></i>Registrarse</a>
                         </li>
                         <li class="nav-item">
-                            <a class=" btn btn-outline-dark rounded m-1" href="/html/pago/carritoCompras.html">
+                            <a class=" btn btn-outline-dark rounded m-1" href="{% url 'carrito' %}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-cart4" viewBox="0 0 16 16">
                                     <path

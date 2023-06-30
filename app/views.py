@@ -42,7 +42,7 @@ def soporte(request):
 def quienessomos(request):
         return render(request, 'app/quienessomos.html')
 
-    
+#---USUARIOS---#    
 def login(request):
     if request.method == 'POST':
         email = request.POST['email']
@@ -55,10 +55,20 @@ def login(request):
         else:
             # Mostrar un mensaje de error indicando que las credenciales son inválidas
             error_message = 'Las credenciales de inicio de sesión son inválidas.'
-            return render(request, 'registration/login.html', {'error_message': error_message})
+            return render(request, 'app/registration/login.html', {'error_message': error_message})
     else:
-        return render(request, 'registration/login.html')
+        return render(request, 'app/registration/login.html')
     
+def registro(request):
+    if request.method == 'POST':
+        formulario = RegistroFormulario(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            # Redirigir a la página de éxito
+    else:
+        formulario = RegistroFormulario()
+    
+    return render(request, 'registration/registro.html', {'formulario': formulario})
     
 #-----------------------CRUD------------------------
 
@@ -122,21 +132,6 @@ def eliminar_eventos(request, id):
 
 #-----------------------FIN CRUD------------------------
 
-#------------Formulario Registro------------------------
-def registro(request):
-    if request.method == 'POST':
-        formulario = RegistroFormulario(request.POST)
-        if formulario.is_valid():
-            formulario.save()
-            # Redirigir a la página de éxito
-    else:
-        formulario = RegistroFormulario()
-    
-    return render(request, 'registration/registro.html', {'formulario': formulario})
-
-
-#-----------------------FIN Formulario Registro------------------------
-
 #------------Detalles Evento------------------------
 def detalle_evento(request, evento_id):
     evento = get_object_or_404(Eventos, id=evento_id)
@@ -151,6 +146,12 @@ def detalle_evento(request, evento_id):
 
 #------------Carrito compras------------------------
 def carrito_compras(request):
+    eventos = Eventos.objects.all()
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    
     if request.method == 'POST':
         form = CarritoForm(request.POST)
         if form.is_valid():
@@ -181,8 +182,10 @@ def carrito_compras(request):
         'total_entradas': total_entradas,
         'total': total,
     }
+    
+    """
 
-    return render(request, 'carritocompra.html', context)
+    return render(request, 'app/carrito.html',{"evento": eventos})
 
 #------------Fin Carrito compras------------------------
 
@@ -191,23 +194,23 @@ def carrito_compras(request):
 #----------------------ADMINISTRADOR----------------------------------
 
 def homeAdmin(request):
-    return render(request, 'app/homeAdmin.html')
+    return render(request, 'app/admin/homeAdmin.html')
 
 def gestionEventos(request):
     eventos = Eventos.objects.all()
-    return render(request, 'app/gestionEventos.html', {"eventos": eventos})
+    return render(request, 'app/admin/gestionEventos.html', {"eventos": eventos})
 
 def gestionUsuarios(request):
     clientes = Cliente.objects.all()
-    return render(request, 'app/gestionUsuarios.html', {"clientes": clientes})
+    return render(request, 'app/admin/gestionUsuarios.html', {"clientes": clientes})
 
 def gestionEventosEditar(request):
     eventos = Eventos.objects.all()
-    return render(request, 'app/gestionEventosEditar.html', {"eventos": eventos})
+    return render(request, 'app/admin/gestionEventosEditar.html', {"eventos": eventos})
 
 def gestionUsuariosEditar(request):
     clientes = Cliente.objects.all()
-    return render(request, 'app/gestionUsuariosEditar.html', {"clientes": clientes})
+    return render(request, 'app/admin/gestionUsuariosEditar.html', {"clientes": clientes})
 
 def registrarUsuario(request):
     nombre=request.POST['inputFirstName']
@@ -229,7 +232,7 @@ def eliminarUsuario(request, rut):
 def modificarUsuario(request, rut):
     cliente = Cliente.objects.get(rut=rut)
     
-    return render(request, 'app/gestionUsuariosEditar.html', {"cliente": cliente})
+    return render(request, 'app/admin/gestionUsuariosEditar.html', {"cliente": cliente})
 
 def editarUsuario(request):
     nombre=request.POST['inputFirstName']
