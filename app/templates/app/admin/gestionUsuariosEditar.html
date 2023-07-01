@@ -1,10 +1,10 @@
-{% extends "app/baseAdmin.html" %}
+{% extends "app/admin/baseAdmin.html" %}
 {% block titulo%}EDITAR USUARIO{%endblock%}
 
 {% block body%}
 <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-        <h2>Gestion de Usuarios</h2>
+        <h2>Modificar Usuario</h2>
         <div class="card">
             <div class="card-body">
                 <form action="/editarUsuario/" method="POST"> {% csrf_token %}

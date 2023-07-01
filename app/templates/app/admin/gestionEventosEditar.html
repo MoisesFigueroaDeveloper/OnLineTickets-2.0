@@ -1,0 +1,69 @@
+{% extends 'app/admin/baseAdmin.html' %}
+{% block titulo %}Editar Evento{% endblock titulo %}
+
+{% block body %}
+<div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+        <h2>Modificar Evento</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarEvento/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <div class="form-outline form-white mb-4">
+                            <label class="form-label" for="inputId">ID Evento</label>
+                            <input type="text" name="inputId" id="inputId" value="{{evento.id}}"
+                                class="form-control form-control-lg" placeholder="ID Evento" readonly required>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                            <label class="form-label" for="inputNombre">Nombre Evento</label>
+                            <input type="text" name="inputNombre" id="inputNombre" value="{{evento.nombre}}"
+                                class="form-control form-control-lg" placeholder="Nombre del evento" required>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                            <label class="form-label" for="inputCategoria">Categoria</label>
+                            <select class="form-select" name="inputCategoria" id="inputCategoria" required>
+                                <option selected>{{ evento.categoria }}</option>
+                                <option value="Musica">Musica</option>
+                                <option value="Deporte">Deporte</option>
+                                <option value="Teatro">Teatro</option>
+                                <option value="Familia">Familia</option>
+                            </select>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                            <label class="form-label" for="inputFecha">Fecha del Evento</label>
+                            <input type="date" name="inputFecha" id="inputFecha" value="{{evento.fecha}}"
+                                class="form-control form-control-lg"
+                                placeholder="Fecha del Evento formato:(dia/mes/año)" required>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                            <label class="form-label" for="inputPrecio">Precio de cada entrada</label>
+                            <input type="number" name="inputPrecio" id="inputPrecio" value="{{evento.precio}}"
+                                class="form-control form-control-lg" placeholder="Precio por cada entrada" required>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                            <label class="form-label" for="inputStock">Stock de entradas</label>
+                            <input type="number" name="inputStock" id="inputStock" value="{{evento.stock}}"
+                                class="form-control form-control-lg" placeholder="Stock total de entradas " required>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                            <label class="form-label" for="inputDescripcion">Descripcion del evento</label>
+                            <textarea name="inputDescripcion" id="inputDescripcion" value="{{evento.descripcion}}"
+                                cols="30" rows="5" class="form-control form-control-lg" placeholder="Descripcion"
+                                required>{{evento.descripcion}}</textarea>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                            <label class="form-label" for="inputImagen">Imagen Evento</label>
+                            <input type="file" name="inputImagen" id="inputImagen" value="{{evento.imagen}}"
+                                class="form-control form-control-lg">
+                        </div>
+
+                        <div class="d-flex justify-content-center text-center">
+                            <button type="submit" class="btn btn-success btn-lg">Guardar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

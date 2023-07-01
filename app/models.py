@@ -25,9 +25,9 @@ class Eventos(models.Model):
         (2, 'Teatro'),
         (3, 'Familia'),
     )
-    id = models.PositiveIntegerField(primary_key=True,max_length=6)
+    id = models.CharField(max_length=6, unique=True, primary_key=True)
     nombre = models.CharField(max_length=50)
-    descripcion = models.TextField(max_length=1000)
+    descripcion = models.TextField(blank=True)
     categoria = models.CharField(max_length=10)
     fecha = models.DateField(blank=True, null=True)
     precio = models.PositiveIntegerField()

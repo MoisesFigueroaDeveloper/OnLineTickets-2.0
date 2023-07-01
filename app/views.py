@@ -198,17 +198,10 @@ def detalle_evento(request, evento_id):
 def homeAdmin(request):
     return render(request, 'app/admin/homeAdmin.html')
 
-def gestionEventos(request):
-    eventos = Eventos.objects.all()
-    return render(request, 'app/admin/gestionEventos.html', {"eventos": eventos})
-
+#---ADMIN-USUARIO---#
 def gestionUsuarios(request):
     clientes = Cliente.objects.all()
     return render(request, 'app/admin/gestionUsuarios.html', {"clientes": clientes})
-
-def gestionEventosEditar(request):
-    eventos = Eventos.objects.all()
-    return render(request, 'app/admin/gestionEventosEditar.html', {"eventos": eventos})
 
 def gestionUsuariosEditar(request):
     clientes = Cliente.objects.all()
@@ -247,14 +240,81 @@ def editarUsuario(request):
     cliente.nombre = nombre
     cliente.apellido = apellido
     cliente.rut = rut
-    cliente.correo = correo#---EVENTOS---#
+    cliente.correo = correo
     cliente.contraseña = contraseña
     
     cliente.save()
     
     return redirect('/gestionUsuarios')
 
-#---EVENTOS---#
+#---ADMIN-EVENTO---#
+
+def gestionEventos(request):
+    eventos = Eventos.objects.all()
+    return render(request, 'app/admin/gestionEventos.html', {"eventos": eventos})
+
+def gestionEventosEditar(request):
+    eventos = Eventos.objects.all()
+    return render(request, 'app/admin/gestionEventosEditar.html', {"eventos": eventos})
+
+def registrarEvento(request):
+    id = request.POST['inputId']
+    nombre = request.POST['inputNombre']
+    categoria = request.POST['inputCategoria']
+    fecha = request.POST['inputFecha']
+    precio = request.POST['inputPrecio']
+    stock = request.POST['inputStock']
+    descripcion = request.POST['inputDescripcion']
+    imagen = request.POST['inputImagen']
+    
+    evento = Eventos.objects.create(
+        id=id,
+        nombre=nombre,
+        categoria=categoria,
+        fecha=fecha,
+        precio=precio,
+        stock=stock,
+        descripcion=descripcion,
+        imagen=imagen,
+    )
+    
+    return redirect('/gestionEventos')
+
+def eliminarEvento(request, id):
+    evento = Eventos.objects.get(id=id)
+    evento.delete()
+    
+    return redirect('/gestionEventos')
+
+def modificarEvento(request,id):
+    evento = Eventos.objects.get(id=id)
+    
+    return render(request, 'app/admin/gestionEventosEditar.html', {"evento": evento})
+
+def editarEvento(request):
+    id = request.POST['inputId']
+    nombre = request.POST['inputNombre']
+    categoria = request.POST['inputCategoria']
+    fecha = request.POST['inputFecha']
+    precio = request.POST['inputPrecio']
+    stock = request.POST['inputStock']
+    descripcion = request.POST['inputDescripcion']
+    imagen = request.POST['inputImagen']
+    
+    evento = Eventos.objects.get(id=id)
+    
+    evento.nombre = nombre
+    evento.categoria = categoria
+    evento.fecha = fecha
+    evento.precio = precio
+    evento.stock = stock
+    evento.descripcion = descripcion
+    evento.imagen = imagen
+    
+    evento.save()
+    
+    return redirect('/gestionEventos')
+#---------------EVENTOS---------------#
 
 def musica(request):
     return render(request, 'app/Eventos/musica.html')

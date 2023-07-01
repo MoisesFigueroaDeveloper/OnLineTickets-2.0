@@ -25,16 +25,22 @@ urlpatterns = [
     path('eliminar-eventos/<int:id>/', eliminar_eventos, name="eliminar_eventos"),
     path('eventos/detalles/<int:evento_id>/', views.detalle_evento, name='evento_detalles'),
     path('carrito/', views.carrito_compras, name="carrito"),
+    path('resumenPedido.html/', views.resumenPedido, name='resumenPedido'),
+    path('pago/', views.pago, name='pago'),
     #---ADMIN---#
     path('homeAdmin/', homeAdmin, name="homeAdmin"),
-    path('gestionEventos/', gestionEventos, name="gestionEventos"),
-    path('gestionEventosEditar/', gestionEventosEditar, name="gestionEventosEditar"),
+    
     path('gestionUsuarios/', gestionUsuarios, name="gestionUsuarios"),
     path('gestionUsuariosEditar/', gestionUsuariosEditar, name="gestionUsuariosEditar"),
     path('registrarUsuario/', views.registrarUsuario),
     path('eliminarUsuario/<rut>', views.eliminarUsuario),
     path('modificarUsuario/<rut>', views.modificarUsuario),
     path('editarUsuario/', views.editarUsuario),
-    path('resumenPedido.html/', views.resumenPedido, name='resumenPedido'),
-    path('pago.html/', views.pago, name='pago'),
+    
+    path('gestionEventos/', gestionEventos, name="gestionEventos"),
+    path('gestionEventosEditar/', gestionEventosEditar, name="gestionEventosEditar"),
+    path('registrarEvento/', views.registrarEvento),
+    path('eliminarEvento/<id>', views.eliminarEvento),
+    path('modificarEvento/<id>', views.modificarEvento),
+    path('editarEvento/', views.editarEvento)
 ]
