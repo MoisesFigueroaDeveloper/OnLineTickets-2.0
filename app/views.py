@@ -292,7 +292,28 @@ def modificarEvento(request,id):
     return render(request, 'app/admin/gestionEventosEditar.html', {"evento": evento})
 
 def editarEvento(request):
-    return
+    id = request.POST['inputId']
+    nombre = request.POST['inputNombre']
+    categoria = request.POST['inputCategoria']
+    fecha = request.POST['inputFecha']
+    precio = request.POST['inputPrecio']
+    stock = request.POST['inputStock']
+    descripcion = request.POST['inputDescripcion']
+    imagen = request.POST['inputImagen']
+    
+    evento = Eventos.objects.get(id=id)
+    
+    evento.nombre = nombre
+    evento.categoria = categoria
+    evento.fecha = fecha
+    evento.precio = precio
+    evento.stock = stock
+    evento.descripcion = descripcion
+    evento.imagen = imagen
+    
+    evento.save()
+    
+    return redirect('/gestionEventos')
 #---------------EVENTOS---------------#
 
 def musica(request):

@@ -11,18 +11,18 @@
                     <div class="form-group">
                         <div class="form-outline form-white mb-4">
                             <label class="form-label" for="inputId">ID Evento</label>
-                            <input type="text" name="inputId" id="inputId" value="{{evento.id}}" class="form-control form-control-lg"
-                                placeholder="ID Evento" readonly required>
+                            <input type="text" name="inputId" id="inputId" value="{{evento.id}}"
+                                class="form-control form-control-lg" placeholder="ID Evento" readonly required>
                         </div>
                         <div class="form-outline form-white mb-4">
                             <label class="form-label" for="inputNombre">Nombre Evento</label>
-                            <input type="text" name="inputNombre" id="inputNombre" value="{{evento.nombre}}" class="form-control form-control-lg"
-                                placeholder="Nombre del evento" required>
+                            <input type="text" name="inputNombre" id="inputNombre" value="{{evento.nombre}}"
+                                class="form-control form-control-lg" placeholder="Nombre del evento" required>
                         </div>
                         <div class="form-outline form-white mb-4">
                             <label class="form-label" for="inputCategoria">Categoria</label>
-                            <select class="form-select" name="inputCategoria" id="inputCategoria"required>
-                                <option selected>Escoje la categoria ...</option>
+                            <select class="form-select" name="inputCategoria" id="inputCategoria" required>
+                                <option selected>{{ evento.categoria }}</option>
                                 <option value="Musica">Musica</option>
                                 <option value="Deporte">Deporte</option>
                                 <option value="Teatro">Teatro</option>
@@ -31,7 +31,8 @@
                         </div>
                         <div class="form-outline form-white mb-4">
                             <label class="form-label" for="inputFecha">Fecha del Evento</label>
-                            <input type="date" name="inputFecha" id="inputFecha" value="{{evento.fecha}}" class="form-control form-control-lg"
+                            <input type="date" name="inputFecha" id="inputFecha" value="{{evento.fecha}}"
+                                class="form-control form-control-lg"
                                 placeholder="Fecha del Evento formato:(dia/mes/año)" required>
                         </div>
                         <div class="form-outline form-white mb-4">
@@ -41,18 +42,19 @@
                         </div>
                         <div class="form-outline form-white mb-4">
                             <label class="form-label" for="inputStock">Stock de entradas</label>
-                            <input type="number" name="inputStock" id="inputStock" value="{{evento.stock}}" class="form-control form-control-lg"
-                                placeholder="Stock total de entradas " required>
+                            <input type="number" name="inputStock" id="inputStock" value="{{evento.stock}}"
+                                class="form-control form-control-lg" placeholder="Stock total de entradas " required>
                         </div>
                         <div class="form-outline form-white mb-4">
                             <label class="form-label" for="inputDescripcion">Descripcion del evento</label>
-                            <textarea name="inputDescripcion" id="inputDescripcion" value="{{evento.descripcion}}" cols="30" rows="5"
-                                class="form-control form-control-lg" placeholder="Descripcion" required></textarea>
+                            <textarea name="inputDescripcion" id="inputDescripcion" value="{{evento.descripcion}}"
+                                cols="30" rows="5" class="form-control form-control-lg" placeholder="Descripcion"
+                                required>{{evento.descripcion}}</textarea>
                         </div>
                         <div class="form-outline form-white mb-4">
                             <label class="form-label" for="inputImagen">Imagen Evento</label>
-                            <input type="file" name="inputImagen" id="inputImagen" value="{{evento.imagen}}" class="form-control form-control-lg"
-                                required>
+                            <input type="file" name="inputImagen" id="inputImagen" value="{{evento.imagen}}"
+                                class="form-control form-control-lg">
                         </div>
 
                         <div class="d-flex justify-content-center text-center">
