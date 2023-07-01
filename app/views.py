@@ -198,17 +198,10 @@ def detalle_evento(request, evento_id):
 def homeAdmin(request):
     return render(request, 'app/admin/homeAdmin.html')
 
-def gestionEventos(request):
-    eventos = Eventos.objects.all()
-    return render(request, 'app/admin/gestionEventos.html', {"eventos": eventos})
-
+#---ADMIN-USUARIO---#
 def gestionUsuarios(request):
     clientes = Cliente.objects.all()
     return render(request, 'app/admin/gestionUsuarios.html', {"clientes": clientes})
-
-def gestionEventosEditar(request):
-    eventos = Eventos.objects.all()
-    return render(request, 'app/admin/gestionEventosEditar.html', {"eventos": eventos})
 
 def gestionUsuariosEditar(request):
     clientes = Cliente.objects.all()
@@ -247,12 +240,22 @@ def editarUsuario(request):
     cliente.nombre = nombre
     cliente.apellido = apellido
     cliente.rut = rut
-    cliente.correo = correo#---EVENTOS---#
+    cliente.correo = correo
     cliente.contraseña = contraseña
     
     cliente.save()
     
     return redirect('/gestionUsuarios')
+
+#---ADMIN-EVENTO---#
+
+def gestionEventos(request):
+    eventos = Eventos.objects.all()
+    return render(request, 'app/admin/gestionEventos.html', {"eventos": eventos})
+
+def gestionEventosEditar(request):
+    eventos = Eventos.objects.all()
+    return render(request, 'app/admin/gestionEventosEditar.html', {"eventos": eventos})
 
 def registrarEvento(request):
     id = request.POST['inputId']
@@ -282,7 +285,15 @@ def eliminarEvento(request, id):
     evento.delete()
     
     return redirect('/gestionEventos')
-#---EVENTOS---#
+
+def modificarEvento(request,id):
+    evento = Eventos.objects.get(id=id)
+    
+    return render(request, 'app/admin/gestionEventosEditar.html', {"evento": evento})
+
+def editarEvento(request):
+    return
+#---------------EVENTOS---------------#
 
 def musica(request):
     return render(request, 'app/Eventos/musica.html')
