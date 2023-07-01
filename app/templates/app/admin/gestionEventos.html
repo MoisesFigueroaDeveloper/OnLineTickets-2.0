@@ -1,0 +1,113 @@
+{% extends "app/admin/baseAdmin.html" %}
+{% block titulo%}Gestion de Eventos{%endblock%}
+{% block actEvento%}active{%endblock%}
+
+{% block body%}
+<div class="container-fluid">
+    <div class="row">
+        <!--AGREGAR EVENTO-->
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+            <h2>Gestion de Eventos</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/registrarEvento/" method="POST"> {% csrf_token %}
+                        <div class="form-group">
+                            <div class="form-outline form-white mb-4">
+                                <label class="form-label" for="inputId">ID Evento</label>
+                                <input type="text" name="inputId" id="inputId" class="form-control form-control-lg"
+                                    placeholder="ID Evento" required>
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                <label class="form-label" for="inputNombre">Nombre Evento</label>
+                                <input type="text" name="inputNombre" id="inputNombre"
+                                    class="form-control form-control-lg" placeholder="Nombre del evento" required>
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                <label class="form-label" for="inputCategoria">Categoria</label>
+                                <select class="form-select" name="inputCategoria" id="inputCategoria" required>
+                                    <option selected>Escoje la categoria ...</option>
+                                    <option value="Musica">Musica</option>
+                                    <option value="Deporte">Deporte</option>
+                                    <option value="Teatro">Teatro</option>
+                                    <option value="Familia">Familia</option>
+                                </select>
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                <label class="form-label" for="inputFecha">Fecha del Evento</label>
+                                <input type="date" name="inputFecha" id="inputFecha"
+                                    class="form-control form-control-lg"
+                                    placeholder="Fecha del Evento formato:(dia/mes/año)" required>
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                <label class="form-label" for="inputPrecio">Precio de cada entrada</label>
+                                <input type="number" name="inputPrecio" id="inputPrecio"
+                                    class="form-control form-control-lg" placeholder="Precio por cada entrada" required>
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                <label class="form-label" for="inputStock">Stock de entradas</label>
+                                <input type="number" name="inputStock" id="inputStock"
+                                    class="form-control form-control-lg" placeholder="Stock total de entradas "
+                                    required>
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                <label class="form-label" for="inputDescripcion">Descripcion del evento</label>
+                                <textarea name="inputDescripcion" id="inputDescripcion" cols="30" rows="5"
+                                    class="form-control form-control-lg" placeholder="Descripcion" required></textarea>
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                <label class="form-label" for="inputImagen">Imagen Evento</label>
+                                <input type="file" name="inputImagen" id="inputImagen"
+                                    class="form-control form-control-lg" required>
+                            </div>
+                                
+                            <div class="d-flex justify-content-center text-center">
+                                <button type="submit" class="btn btn-success btn-lg">Guardar</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!--LISTADO DE EVENTOS-->
+        <div class="col-xl-8 col-lg-8 col-md-6 col-sm-6">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Categoria</th>
+                            <th>Fecha</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Descripción</th>
+                            <th colspan="2">Opcion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <h1>Listado de eventos</h1>
+                        {% for e in eventos %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{e.id}}</td>
+                            <td>{{e.nombre}}</td>
+                            <td>{{e.categoria}}</td>
+                            <td>{{e.fecha}}</td>
+                            <td>{{e.precio}}</td>
+                            <td>{{e.stock}}</td>
+                            <td>{{e.descripcion}}</td>
+                            <td><a class="btn btn-warning" href="/modificarEvento/{{e.id}}">Editar</a></td>
+                            <td><a class="btn btn-danger" href="/eliminarEvento/{{e.id}}">Eliminar</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

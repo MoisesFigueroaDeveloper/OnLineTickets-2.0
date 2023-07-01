@@ -2,37 +2,8 @@
 {% load static %}
 
 {% block contenido %}
-  <!--Header-->
-  <div class="contenedor_encabezado">  
-    <!--Logo-->
-    <div class="contenedor_logo">
-        <a href="{% url 'home' %}">
-            <img class="item-logo" src="{% static 'app/img/OnLineTickets-Logo.png' %}" alt="logo">
-        </a>
-    </div>
-    <!--Barra Buscador-->
-    <div class="contenedor_barrabusqueda">
-        <form class="item-barra-busqueda" action="" method="get">
-          <input type="text" placeholder="Buscar..." name="q">
-          <button class="boton-busqueda" type="submit"><span class="icono-lupa"></span>Buscar</button>
-        </form>
-    </div>
 
-    <!--Inicio sesion/Registro-->
-    <div class="contenedor_login">
-        <nav class="subcontenedor_login">
-            <ul>
-                <li class="item-inicio-sesion"><a href="{% url 'login' %}">Iniciar Sesion</a></li>
-                <li class="item-registro"><a href="{% url 'registro' %}">Registrar</a></li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'homeAdmin' %}">Administrador</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-  </div>
-
-  <!--Nav Categorias-->
+<!--Nav Categorias
   <main class="contenedor_categorias">
     <section class="seccion">
         <ul>
@@ -60,8 +31,8 @@
 
     <div id="eventos-container"></div>
   </main>
-
-  <!--Banner-->
+  -->
+<!--Banner
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -99,9 +70,53 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
+  </div>-->
+<div class="container">
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'app/img/Eventos-conciertos/evento-concierto-1.png' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>First slide label</h5>
+          <p>Some representative placeholder content for the first slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'app/img/Eventos-conciertos/evento-concierto-1.png' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'app/img/Eventos-conciertos/evento-concierto-1.png' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
+</div>
 
-<!-- Eventos publicados -->
+
+<!-- Eventos publicados 
 {% load humanize %}
 <h2>Eventos</h2>
 <div class="eventos-publicados">
@@ -119,31 +134,26 @@
       </div>
     </div>
   {% endfor %}
-</div>
+</div>-->
 
-  <!--Footer-->
-  <footer id="elementos_footers">
-      <div class="contenedor_sociales">
-        <ul>
-          <li><a href="{% url 'contactanos' %}">Contactanos</a></li>
-          <li><a href="{%url 'soporte' %}">Soporte</a></li>
-          <li><a href="{% url 'quienessomos' %}">Quienes Somos</a></li>
-        </ul>
-      </div>
-      <p>Siguenos</p>
-      <ul class="Redes_Sociales">
-          <li><a target="_blank" href="https://www.youtube.com/user/nombre-canal"><i class="fab fa-youtube"></i></a></li>
-          <li><a target="_blank" href="https://www.instagram.com/nombre-usuario/"><i class="fab fa-instagram"></i></a></li>
-          <li><a target="_blank" href="https://www.facebook.com/nombre-pagina/"><i class="fab fa-facebook"></i></a></li>
-      </ul>
-      <div class="derechos_autor">
-          <p>&copy; 2023 - Todos los derechos reservados</p>
-      </div>
-  </footer>
+<!--Footer-->
+<footer id="elementos_footers">
+  <div class="contenedor_sociales">
+    <ul>
+      <li><a href="{% url 'contactanos' %}">Contactanos</a></li>
+      <li><a href="{%url 'soporte' %}">Soporte</a></li>
+      <li><a href="{% url 'quienessomos' %}">Quienes Somos</a></li>
+    </ul>
+  </div>
+  <p>Siguenos</p>
+  <ul class="Redes_Sociales">
+    <li><a target="_blank" href="https://www.youtube.com/user/nombre-canal"><i class="fab fa-youtube"></i></a></li>
+    <li><a target="_blank" href="https://www.instagram.com/nombre-usuario/"><i class="fab fa-instagram"></i></a></li>
+    <li><a target="_blank" href="https://www.facebook.com/nombre-pagina/"><i class="fab fa-facebook"></i></a></li>
+  </ul>
+  <div class="derechos_autor">
+    <p>&copy; 2023 - Todos los derechos reservados</p>
+  </div>
+</footer>
 
-
-  <!--Script del boostrap para el carrusel-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 {% endblock %}
