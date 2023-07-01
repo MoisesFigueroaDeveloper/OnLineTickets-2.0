@@ -254,6 +254,34 @@ def editarUsuario(request):
     
     return redirect('/gestionUsuarios')
 
+def registrarEvento(request):
+    id = request.POST['inputId']
+    nombre = request.POST['inputNombre']
+    categoria = request.POST['inputCategoria']
+    fecha = request.POST['inputFecha']
+    precio = request.POST['inputPrecio']
+    stock = request.POST['inputStock']
+    descripcion = request.POST['inputDescripcion']
+    imagen = request.POST['inputImagen']
+    
+    evento = Eventos.objects.create(
+        id=id,
+        nombre=nombre,
+        categoria=categoria,
+        fecha=fecha,
+        precio=precio,
+        stock=stock,
+        descripcion=descripcion,
+        imagen=imagen,
+    )
+    
+    return redirect('/gestionEventos')
+
+def eliminarEvento(request, id):
+    evento = Eventos.objects.get(id=id)
+    evento.delete()
+    
+    return redirect('/gestionEventos')
 #---EVENTOS---#
 
 def musica(request):
