@@ -1,6 +1,7 @@
 import re
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
+from django.contrib.auth.models import User
 from django.db import models
 
 rut_regex = r'^\d{7,8}-[0-9kK]{1}$'
@@ -14,8 +15,7 @@ class Cliente(models.Model):
     password = models.CharField(max_length=50)
 
     def __str__(self):
-        texto = "{0} {1}"
-        return texto(self.nombre, self.apellido)
+        return f"{self.nombre} {self.apellido}"
 
     
 class Eventos(models.Model):
@@ -23,7 +23,7 @@ class Eventos(models.Model):
         (0, 'Musica'),
         (1, 'Deporte'),
         (2, 'Teatro'),
-        (3, 'Familia'),
+        (3, 'Cine'),
     )
     id = models.CharField(max_length=6, unique=True, primary_key=True)
     nombre = models.CharField(max_length=50)
@@ -33,9 +33,19 @@ class Eventos(models.Model):
     precio = models.PositiveIntegerField()
     stock = models.PositiveIntegerField()
     imagen = models.ImageField(upload_to="eventos", null=True)
+
     def __str__(self):
         return self.nombre
-    
+
+
+class Carrito(models.Model):
+    usuario = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    evento = models.ForeignKey(Eventos, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.usuario.username} - {self.evento.nombre}"    
+
 opciones_consultas = [
     [0, "consultas"],
     [1, "reclamos"],
@@ -49,6 +59,6 @@ class Contactanos(models.Model):
     tipo_consultas = models.IntegerField(choices=opciones_consultas)
     mensaje = models.TextField(max_length=250)
     avisos = models.BooleanField()
+
     def __str__(self):
         return self.nombre
-    

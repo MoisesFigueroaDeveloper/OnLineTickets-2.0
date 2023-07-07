@@ -27,6 +27,21 @@
                 OnlineTickets
             </a>
 
+            <ul class="navbar-nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link {% block actMusica%}{%endblock%}"  href="{% url 'musica' %}">Musica</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% block actDeporte%}{%endblock%}" href="{% url 'deporte' %}">Deporte</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% block actTratro%}{%endblock%}" href="{% url 'teatro' %}">Teatro</a>
+                </li>
+                <li>
+                    <a class="nav-link {% block actFamilia%}{%endblock%}" href="{% url 'familia' %}">Familia</a>
+                </li>
+            </ul>
+            
             <!--Crea un boton hamburgueza-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,22 +50,6 @@
 
             <!--Contenido que va a quedar dentro del manu hamburguesa-->
             <div class="collapse navbar-collapse" id="navbarNav">
-
-                <ul class="navbar-nav nav-pills">
-                    <li class="nav-item">
-                        <a class="nav-link {% block actMusica%}{%endblock%}"  href="{% url 'musica' %}">Musica</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% block actDeporte%}{%endblock%}" href="{% url 'deporte' %}">Deporte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% block actTratro%}{%endblock%}" href="{% url 'teatro' %}">Teatro</a>
-                    </li>
-                    <li>
-                        <a class="nav-link {% block actFamilia%}{%endblock%}" href="{% url 'familia' %}">Familia</a>
-                    </li>
-                </ul>
-
                 <!--Search-->
                 <div class="container">
                     <!-- no borren esto, es solo un espacio en el navbar para que quede centrada la barrade busqueda-->
@@ -68,8 +67,7 @@
                     <!--Botones del lado derecho-->
                     <ul class="navbar-nav justify-content-end">
                         <li class="nav-item">
-                            <a class="btn btn-outline-dark rounded m-1" href="{% url 'login' %}">Iniciar
-                                sesión</a>
+                            <a class="btn btn-outline-dark rounded m-1" href="{% url 'login' %}">Ingresar</a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-outline-dark rounded m-1" href="{% url 'registro' %}">
@@ -114,16 +112,14 @@
 
     </div>
 
-    Eventos publicados
+    <!--Eventos publicados-->
     <section class="eventos">
+    </section>
 
-    </section>-->
 
-
-    <!--Pie de pagina
+    <!--Pie de pagina-->
     <footer id="elementos_footers">
-
-    </footer>-->
+    </footer>
 
 
 

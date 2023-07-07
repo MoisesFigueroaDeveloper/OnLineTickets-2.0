@@ -14,9 +14,6 @@ class EventosAdmin(admin.ModelAdmin):
     search_fields = ["nombre"]
     list_filter = ["categoria"]
     list_per_page = 12
-    
-
-    
 
 # Register your models here.
 admin.site.register(Cliente, ClienteAdmin)

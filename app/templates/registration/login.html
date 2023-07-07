@@ -17,17 +17,20 @@
                     <div class="card-body">
                         <h2>Ingresar</h2>
                         <hr></hr>
-                        <form action="" method="post">
-                            {% csrf_token %}
-                            {{ form }}
-                            <a href="{% url 'home' %}">Ir al home</a>
-                            <input type="submit" value="Ingresar">
-                        </form>
+                            <form method="post">
+                                {% csrf_token %}
+                                {{ form }}
+                                <button type="submit">Ingresar</button>
+                            </form>
                     </div>
                 </div>
 
-                {% if user.is_authenticated %}
-                    <p><a href="{% url 'logout' %}">Cerrar sesión</a></p>
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
                 {% endif %}
             </div>
         </div>

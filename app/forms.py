@@ -4,9 +4,8 @@ from .models import Contactanos, Eventos
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
+from django.contrib.auth.forms import AuthenticationForm
 from .models import Cliente
-
-
 class ContactanosForm(forms.ModelForm):
     
     class Meta:

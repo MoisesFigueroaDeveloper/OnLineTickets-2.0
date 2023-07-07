@@ -1,14 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Eventos
-from .forms import ContactanosForm, EventosForm, CustomUserCreationForm, CarritoForm
-from .models import Eventos, Cliente
-from .forms import ContactanosForm, EventosForm, CustomUserCreationForm
+from .models import Eventos, Cliente, Carrito
+from .forms import ContactanosForm, EventosForm, CustomUserCreationForm, CarritoForm, AuthenticationForm
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.http import Http404 
 from .forms import RegistroFormulario
+from django.http import JsonResponse
 from django.contrib.auth import authenticate, login
-from django.contrib import messages
+# Resto del código de tus vistas...
 
 # Create your views here.
 
@@ -43,22 +42,21 @@ def quienessomos(request):
         return render(request, 'app/quienessomos.html')
 
 #---USUARIOS---#    
-def login(request):
+def inicio_sesion(request):
     if request.method == 'POST':
-        email = request.POST['email']
+        correo = request.POST['correo']
         password = request.POST['password']
-        user = authenticate(request, email=email, password=password)
+        user = authenticate(request, username=correo, password=password)
         if user is not None:
             login(request, user)
-            # Redirigir a la página de inicio o a la página deseada después de iniciar sesión
-            return redirect('home')  # Reemplaza 'home' con la URL de la página deseada
+            return redirect('home')
         else:
-            # Mostrar un mensaje de error indicando que las credenciales son inválidas
             error_message = 'Las credenciales de inicio de sesión son inválidas.'
-            return render(request, 'app/registration/login.html', {'error_message': error_message})
+            return render(request, 'registration/login.html', {'error_message': error_message})
     else:
-        return render(request, 'app/registration/login.html')
-    
+        return render(request, 'registration/login.html')
+
+#------------Registro--------------------------------
 def registro(request):
     if request.method == 'POST':
         formulario = RegistroFormulario(request.POST)
@@ -69,6 +67,8 @@ def registro(request):
         formulario = RegistroFormulario()
     
     return render(request, 'registration/registro.html', {'formulario': formulario})
+
+#-----------Fin Registro--------------------------------
 
 #---PAGO---#    
 def carrito_compras(request):
@@ -118,68 +118,6 @@ def resumenPedido(request):
 
 def pago(request):
     return render(request, 'app/pago.html')
-
-#-----------------------CRUD------------------------
-
-#--Agregar Eventos-----------
-def agregar_eventos(request):
-    
-    data = {
-        'form': EventosForm()
-    }
-    
-    if request.method == 'POST':
-        formulario = EventosForm(data=request.POST, files=request.FILES)
-        if formulario.id.valid():
-            formulario.save()
-            data["mensaje"] = "Guardado correctamente"
-        else:
-            data["form"] = formulario
-        
-    return render(request, 'app/eventos/agregar.html', data)
-
-#---Listar Eventos-----------
-def listar_eventos(request):
-    eventos = Eventos.objects.all()
-    page = request.GET.get('page', 1)
-    
-    try: 
-        paginator = Paginator(eventos, 5)
-        eventos = paginator.page(page)
-    except:
-        raise Http404
-    
-    data = {
-        'eventos': eventos
-    }
-    
-    return render(request, 'app/eventos/listar.html', data)
-
-#---Modificar Eventos-----------
-def modificar_eventos(request, id):
-    eventos = get_object_or_404(Eventos, id= id)
-    
-    data = {
-        'form': EventosForm(instance=eventos)
-    }
-    
-    if request.method == 'POST':
-        formulario = EventosForm(data=request.POST, instance=eventos, files=request.FILES)
-        if formulario.is_valid():
-            formulario.save()
-            messages.success(request, "Modificacion exitosa")
-            return redirect(to="listar_eventos")
-        data["form"] = formulario
-        
-    return render(request, 'app/eventos/modificar.html', data)
-
-#---Eliminar Eventos-----------
-def eliminar_eventos(request, id):
-    eventos = get_object_or_404(Eventos, id=id)
-    eventos.delete()
-    return redirect(to="listar_eventos")
-
-#-----------------------FIN CRUD------------------------
 
 #------------Detalles Evento------------------------
 def detalle_evento(request, evento_id):
@@ -317,13 +255,43 @@ def editarEvento(request):
 #---------------EVENTOS---------------#
 
 def musica(request):
-    return render(request, 'app/Eventos/musica.html')
+    eventos = Eventos.objects.filter(categoria='Musica')
+    return render(request, 'app/home.html', {'eventos': eventos})
 
 def deporte(request):
-    return render(request, 'app/Eventos/deporte.html')
+    eventos = Eventos.objects.filter(categoria='Deporte')
+    return render(request, 'app/home.html', {'eventos': eventos})
 
 def teatro(request):
-    return render(request, 'app/Eventos/teatro.html')
+    eventos = Eventos.objects.filter(categoria='Teatro')
+    return render(request, 'app/home.html', {'eventos': eventos})
 
 def familia(request):
-    return render(request, 'app/Eventos/familia.html')
+    eventos = Eventos.objects.filter(categoria='Familia')
+    return render(request, 'app/home.html', {'eventos': eventos})
+
+
+#-----------Carrito de compras--------------------------
+def agregar_al_carrito(request, evento_id):
+    carrito = Carrito.objects.first()  # Obtener el carrito actual, puedes ajustar esta lógica según tus necesidades
+
+    evento = Eventos.objects.get(id=evento_id)
+
+    # Agregar lógica para agregar el evento al carrito aquí
+
+    return JsonResponse({'message': 'Evento agregado al carrito'})
+
+def carrito_compras(request):
+    carrito = Carrito.objects.first()  # Obtener el carrito actual, puedes ajustar esta lógica según tus necesidades
+
+    # Agregar lógica para obtener los elementos del carrito aquí
+
+    total = 0  # Calcular el total del carrito aquí
+
+    data = {
+        'elementos_carrito': [],  # Puedes reemplazar esto con la lógica para obtener los elementos del carrito
+        'total': total
+    }
+
+    return render(request, 'app/carrito.html', data)
+     
